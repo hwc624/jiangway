@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>江味齋 JiangWay — Taiwanese Home Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Zulu&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1208;
+  --cream: #f7f2e8;
+  --gold: #c8963e;
+  --gold-light: #e8c87a;
+  --red: #b83232;
+  --red-dark: #7a1f1f;
+  --sage: #6b7c5a;
+  --warm-white: #fdfaf4;
+  --border: rgba(200,150,62,0.25);
+  --font-display: 'Playfair Display', 'Noto Serif TC', serif;
+  --font-serif: 'Noto Serif TC', serif;
+  --font-body: 'DM Sans', 'Noto Sans Zulu', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 48px;
+}
+.lang-bar .logo-mini {
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+.lang-switcher {
+  display: flex;
+  gap: 4px;
+}
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(200,150,62,0.3);
+  color: rgba(247,242,232,0.6);
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 2px;
+}
+.lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+.lang-btn.active { background: var(--gold); border-color: var(--gold); color: var(--ink); font-weight: 500; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 4rem 5rem 5rem;
+  position: relative;
+}
+.hero-left::after {
+  content: '';
+  position: absolute;
+  right: -1px; top: 0; bottom: 0;
+  width: 60px;
+  background: var(--ink);
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  z-index: 2;
+}
+.hero-tag {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-tag::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 5rem);
+  color: var(--warm-white);
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+.hero-title-zh {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  color: var(--gold-light);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+.hero-desc {
+  color: rgba(247,242,232,0.7);
+  font-size: 15px;
+  max-width: 340px;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--gold);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  padding: 14px 28px;
+  border-radius: 2px;
+  transition: all 0.25s;
+  align-self: flex-start;
+}
+.hero-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+.hero-cta-arrow { font-size: 18px; }
+.hero-right {
+  background: linear-gradient(160deg, #2d1f0e 0%, #4a2c12 40%, #3d2510 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+  background-size: 20px 20px;
+}
+.hero-emblem {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.emblem-circle {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 auto 2rem;
+}
+.emblem-circle::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(200,150,62,0.4);
+}
+.emblem-char {
+  font-family: var(--font-serif);
+  font-size: 72px;
+  color: var(--gold);
+  line-height: 1;
+  font-weight: 700;
+}
+.emblem-sub {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--gold-light);
+  letter-spacing: 0.3em;
+  margin-top: 8px;
+}
+.hero-since {
+  color: rgba(200,150,62,0.7);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(200,150,62,0.5);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 3;
+}
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollAnim 1.8s ease-in-out infinite;
+}
+@keyframes scrollAnim {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.6); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ── SECTION SHARED ── */
+section { position: relative; }
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.section-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--gold); }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.section-title-zh {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 3rem;
+}
+
+/* ── BRAND STORY ── */
+.brand-section { background: var(--warm-white); }
+.brand-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.brand-text p {
+  color: #4a3a28;
+  margin-bottom: 1.5rem;
+  font-size: 15px;
+}
+.brand-visual {
+  position: relative;
+}
+.brand-card-stack {
+  position: relative;
+  height: 380px;
+}
+.brand-card {
+  position: absolute;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+.brand-card-1 {
+  width: 240px; height: 300px;
+  background: var(--ink);
+  top: 0; left: 20px;
+  transform: rotate(-3deg);
+}
+.brand-card-2 {
+  width: 200px; height: 260px;
+  background: var(--red-dark);
+  top: 60px; left: 120px;
+  transform: rotate(2deg);
+  border: 1px solid var(--gold);
+}
+.brand-card-3 {
+  width: 160px; height: 200px;
+  background: var(--gold);
+  top: 100px; left: 200px;
+  transform: rotate(-1deg);
+}
+.brand-card-icon { font-size: 48px; }
+.brand-card-text { font-family: var(--font-serif); font-size: 13px; color: var(--gold-light); text-align: center; letter-spacing: 0.1em; }
+.brand-card-3 .brand-card-text { color: var(--ink); }
+.values-row {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.value-item {
+  flex: 1;
+  border-left: 2px solid var(--gold);
+  padding-left: 1rem;
+}
+.value-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.value-label {
+  font-size: 12px;
+  color: #7a6040;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── MENU ── */
+.menu-section { background: var(--ink); }
+.menu-section .section-title { color: var(--warm-white); }
+.menu-section .section-title-zh { color: var(--gold-light); }
+.menu-section .section-label { color: var(--gold-light); }
+.menu-section .divider { background: var(--gold-light); }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  margin-top: 3rem;
+}
+.menu-item {
+  background: #2a1d0e;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+.menu-item:hover { background: #351f0a; }
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.4s ease;
+}
+.menu-item:hover::before { height: 100%; }
+.menu-emoji { font-size: 36px; margin-bottom: 1rem; display: block; }
+.menu-name {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+.menu-name-en {
+  font-size: 12px;
+  color: rgba(247,242,232,0.4);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.menu-desc { font-size: 13px; color: rgba(247,242,232,0.6); line-height: 1.7; }
+.menu-footer {
+  margin-top: 4rem;
+  padding: 2rem;
+  border: 1px solid rgba(200,150,62,0.2);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu-footer-text { color: rgba(247,242,232,0.6); font-size: 14px; }
+.menu-footer-highlight { color: var(--gold); font-family: var(--font-serif); font-size: 16px; }
+
+/* ── BAKERY ── */
+.bakery-section { background: #f9f4ea; }
+.bakery-banner {
+  background: var(--red);
+  color: var(--warm-white);
+  padding: 0.6rem 1.5rem;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  border-radius: 1px;
+}
+.bakery-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.bakery-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.bakery-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.bakery-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.bakery-icon { font-size: 28px; margin-bottom: 0.75rem; }
+.bakery-name {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.bakery-desc { font-size: 12px; color: #8a7060; }
+.bakery-info {
+  background: var(--ink);
+  padding: 2.5rem;
+  border-radius: 3px;
+  color: var(--cream);
+}
+.bakery-info h3 {
+  font-family: var(--font-serif);
+  color: var(--gold-light);
+  font-size: 18px;
+  margin-bottom: 1.5rem;
+}
+.bakery-info p { font-size: 14px; color: rgba(247,242,232,0.7); margin-bottom: 1rem; }
+.bakery-logo-text {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.bakery-logo-sub {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(200,150,62,0.6);
+  margin-bottom: 2rem;
+}
+
+/* ── GALLERY ── */
+.gallery-section { background: var(--cream); }
+.gallery-mosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 200px 200px;
+  gap: 6px;
+  margin-top: 3rem;
+}
+.gallery-cell {
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 3rem;
+  transition: transform 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+.gallery-cell:hover { transform: scale(1.02); z-index: 2; }
+.gallery-cell:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26,18,8,0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-overlay-text { color: var(--gold-light); font-family: var(--font-serif); font-size: 14px; letter-spacing: 0.1em; }
+.gc-1 { grid-column: 1 / 3; grid-row: 1; background: #3d2510; }
+.gc-2 { grid-column: 3; grid-row: 1; background: #2a3520; }
+.gc-3 { grid-column: 4; grid-row: 1; background: #3a2020; }
+.gc-4 { grid-column: 1; grid-row: 2; background: #252035; }
+.gc-5 { grid-column: 2 / 4; grid-row: 2; background: #302515; }
+.gc-6 { grid-column: 4; grid-row: 2; background: #353020; }
+.gallery-caption { font-family: var(--font-serif); font-size: 12px; color: var(--gold-light); position: absolute; bottom: 12px; left: 12px; right: 12px; text-align: center; }
+
+/* ── CORPORATE ── */
+.corporate-section { background: var(--red-dark); }
+.corporate-section .section-title { color: var(--warm-white); }
+.corporate-section .section-title-zh { color: var(--gold-light); }
+.corporate-section .section-label { color: var(--gold-light); }
+.corporate-section .divider { background: var(--gold-light); }
+.voucher-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+.voucher-visual {
+  position: relative;
+}
+.voucher-card {
+  background: var(--cream);
+  border-radius: 6px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.voucher-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.voucher-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.voucher-brand { font-family: var(--font-serif); font-size: 18px; color: var(--ink); }
+.voucher-brand-en { font-size: 11px; color: #8a7060; letter-spacing: 0.1em; }
+.voucher-amount {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--red);
+  line-height: 1;
+}
+.voucher-amount-label { font-size: 11px; color: #8a7060; text-align: right; }
+.voucher-divider-dots {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem -2.5rem;
+  position: relative;
+}
+.voucher-divider-dots::before,
+.voucher-divider-dots::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--red-dark);
+  flex-shrink: 0;
+}
+.voucher-dot-line {
+  flex: 1;
+  border-top: 2px dashed rgba(26,18,8,0.2);
+  margin: 0 4px;
+}
+.voucher-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; }
+.voucher-valid { font-size: 12px; color: #8a7060; }
+.voucher-code { font-family: monospace; font-size: 14px; color: var(--ink); letter-spacing: 0.15em; }
+.corporate-info { color: rgba(247,242,232,0.85); }
+.corporate-info h3 { font-family: var(--font-serif); color: var(--gold-light); font-size: 20px; margin-bottom: 1.5rem; }
+.corporate-info p { font-size: 14px; margin-bottom: 1rem; }
+.tier-list { list-style: none; margin: 1.5rem 0; }
+.tier-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(200,150,62,0.2);
+}
+.tier-list li:last-child { border-bottom: none; }
+.tier-badge {
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+}
+.tier-text { font-size: 14px; }
+
+/* ── LOCATION ── */
+.location-section { background: var(--warm-white); }
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.location-map-placeholder {
+  background: #e8e0d0;
+  border-radius: 4px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--border);
+}
+.map-icon { font-size: 3rem; }
+.map-text { font-family: var(--font-serif); font-size: 14px; color: #7a6040; }
+.info-block { margin-bottom: 2.5rem; }
+.info-block-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.info-block-content { font-size: 15px; color: var(--ink); }
+.info-block-content strong { font-family: var(--font-serif); font-size: 17px; }
+.hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1.5rem; font-size: 14px; }
+.hours-day { color: #7a6040; }
+.hours-time { color: var(--ink); }
+
+/* ── CONTACT ── */
+.contact-section { background: var(--ink); }
+.contact-section .section-title { color: var(--warm-white); }
+.contact-section .section-title-zh { color: var(--gold-light); }
+.contact-section .section-label { color: var(--gold-light); }
+.contact-section .divider { background: var(--gold-light); }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.contact-card {
+  background: #2a1d0e;
+  padding: 2.5rem 2rem;
+  border-radius: 3px;
+  border: 1px solid rgba(200,150,62,0.15);
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.contact-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.contact-icon { font-size: 2.5rem; margin-bottom: 1.25rem; }
+.contact-method { font-family: var(--font-serif); font-size: 16px; color: var(--gold-light); margin-bottom: 0.5rem; }
+.contact-value { font-size: 14px; color: rgba(247,242,232,0.6); }
+.contact-action {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 8px 20px;
+  border: 1px solid rgba(200,150,62,0.4);
+  border-radius: 2px;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  transition: all 0.2s;
+}
+.contact-action:hover { background: var(--gold); color: var(--ink); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0f0a05;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.footer-logo { font-family: var(--font-serif); font-size: 24px; color: var(--gold); margin-bottom: 0.5rem; }
+.footer-en { font-family: var(--font-display); font-style: italic; font-size: 14px; color: var(--gold-light); margin-bottom: 1.5rem; }
+.footer-meta { font-size: 12px; color: rgba(200,150,62,0.4); letter-spacing: 0.1em; }
+
+/* ── NAV ── */
+.nav-links {
+  display: none;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-left > * {
+  animation: fadeUp 0.7s ease both;
+}
+.hero-tag { animation-delay: 0.1s; }
+.hero-title { animation-delay: 0.2s; }
+.hero-title-zh { animation-delay: 0.3s; }
+.hero-desc { animation-delay: 0.4s; }
+.hero-cta { animation-delay: 0.5s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 4rem 2rem; }
+  .hero-left::after { display: none; }
+  .hero-right { min-height: 320px; }
+  .brand-grid, .bakery-grid, .voucher-wrap, .location-grid { grid-template-columns: 1fr; }
+  .menu-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gc-1, .gc-2, .gc-3, .gc-4, .gc-5, .gc-6 { grid-column: auto; grid-row: auto; height: 160px; }
+}
+@media (max-width: 600px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .bakery-items { grid-template-columns: 1fr; }
+  .section-inner { padding: 4rem 1.5rem; }
+}
+
+/* ── LANGUAGE VISIBILITY ── */
+[data-lang] { display: none; }
+.lang-zh [data-lang="zh"] { display: block; }
+.lang-en [data-lang="en"] { display: block; }
+.lang-zu [data-lang="zu"] { display: block; }
+[data-lang-inline] { display: none; }
+.lang-zh [data-lang-inline="zh"] { display: inline; }
+.lang-en [data-lang-inline="en"] { display: inline; }
+.lang-zu [data-lang-inline="zu"] { display: inline; }
+</style>
+</head>
+<body class="lang-zh">
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <div class="logo-mini">江味齋 · JiangWay</div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('zh', this)">中文</button>
+    <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+    <button class="lang-btn" onclick="setLang('zu', this)">IsiZulu</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span data-lang-inline="zh">台灣家常料理 · 約翰尼斯堡</span>
+      <span data-lang-inline="en">Taiwanese Home Kitchen · Johannesburg</span>
+      <span data-lang-inline="zu">Ukudla KwaseTaiwan · eJohannesburg</span>
+    </div>
+    <div class="hero-title">JiangWay</div>
+    <div class="hero-title-zh">江味齋</div>
+    <div class="hero-desc">
+      <span data-lang-inline="zh">一道便當，一份思念。<br>來自台灣的家常滋味，在南非的土地上生根。</span>
+      <span data-lang-inline="en">A bento box, a piece of home.<br>Taiwanese comfort food, rooted in South Africa.</span>
+      <span data-lang-inline="zu">Ibhokisi lebhentho, ingxenye yasekhaya.<br>Ukudla kwakoTaiwan, kulimi laseMzansi Afrika.</span>
+    </div>
+    <a href="#location" class="hero-cta">
+      <span data-lang-inline="zh">了解更多</span>
+      <span data-lang-inline="en">Explore More</span>
+      <span data-lang-inline="zu">Thola Okwengeziwe</span>
+      <span class="hero-cta-arrow">→</span>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-emblem">
+      <div class="emblem-circle">
+        <div class="emblem-char">江</div>
+        <div class="emblem-sub">JIĀNG WÈI ZHĀI</div>
+      </div>
+      <div class="hero-since">Est. 2025 · Sandton, Johannesburg</div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span data-lang-inline="zh">往下探索</span>
+      <span data-lang-inline="en">Scroll</span>
+      <span data-lang-inline="zu">Skrolela</span>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STORY -->
+<section class="brand-section" id="about">
+  <div class="section-inner">
+    <div class="brand-grid">
+      <div class="brand-text">
+        <div class="section-label">
+          <span data-lang-inline="zh">品牌故事</span>
+          <span data-lang-inline="en">Our Story</span>
+          <span data-lang-inline="zu">Indaba Yethu</span>
+        </div>
+        <h2 class="section-title">
+          <span data-lang-inline="zh">家的味道<br>跨越距離</span>
+          <span data-lang-inline="en">Taste of Home,<br>Across Distance</span>
+          <span data-lang-inline="zu">Ukwenama Kwekhaya,<br>Phezu Kwebanga</span>
+        </h2>
+        <div class="divider"></div>
+        <div data-lang="zh">
+          <p>江味齋坐落於約翰尼斯堡 Edenburg、Sandton，是一間僅設四桌的台灣家常小館。</p>
+          <p>「江」是奔流的河，是傳承的脈絡。「味」是記憶的根，是思念的形狀。「齋」是一方素淨之地，讓人靜下心來，好好吃一頓飯。</p>
+          <p>2025 年初，我們將台灣的便當文化帶到南非。每道菜都是一封家書——用滷汁、炊煙與米飯，寄給每一個離家在外的人。</p>
+        </div>
+        <div data-lang="en">
+          <p>JiangWay is a cozy Taiwanese home kitchen nestled in Edenburg, Sandton, Johannesburg — with just four tables and a whole lot of heart.</p>
+          <p>"Jiang" flows like a river, carrying tradition. "Wei" is the taste of memory. "Zhai" is a quiet place to sit, breathe, and eat well.</p>
+          <p>Since early 2025, we have brought Taiwan's bento culture to South Africa — one warm, home-cooked meal at a time.</p>
+        </div>
+        <div data-lang="zu">
+          <p>IJiangWay iyindawo yokudla yaseTaiwan ekhona e-Edenburg, Sandton, eJohannesburg — enamathebula amane nje kuphela.</p>
+          <p>Kuze kusukela ngo-2025, siyiletha indlela ye-bento yaseTaiwan eMzansi Afrika — ukudla okulungiswe ekhaya ngesikhathi ngasinye.</p>
+          <p>Yilelo itafula elincane elingabalisa indaba enkulu — ngomfula, ngokhumbulo, nangokukhula.</p>
+        </div>
+        <div class="values-row">
+          <div class="value-item">
+            <div class="value-num">4</div>
+            <div class="value-label" data-lang-inline="zh">桌席</div>
+            <div class="value-label" data-lang-inline="en">Tables</div>
+            <div class="value-label" data-lang-inline="zu">Amatafula</div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">2025</div>
+            <div class="value-label" data-lang-inline="zh">年開業</div>
+            <div class="value-label" data-lang-inline="en">Founded</div>
+            <div class="value-label" data-lang-inline="zu">Yasungulwa</div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">100%</div>
+            <div class="value-label" data-lang-inline="zh">台灣正宗</div>
+            <div class="value-label" data-lang-inline="en">Authentic</div>
+            <div class="value-label" data-lang-inline="zu">Yangempela</div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-visual">
+        <div class="brand-card-stack">
+          <div class="brand-card brand-card-1">
+            <div class="brand-card-icon">🍱</div>
+            <div class="brand-card-text">便當文化<br>Bento Culture</div>
+          </div>
+          <div class="brand-card brand-card-2">
+            <div class="brand-card-icon">🫖</div>
+            <div class="brand-card-text">台灣魂<br>Taiwanese Soul</div>
+          </div>
+          <div class="brand-card brand-card-3">
+            <div class="brand-card-icon">🌍</div>
+            <div class="brand-card-text" style="color:var(--ink)">南非根<br>SA Roots</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="section-inner">
+    <div class="section-label">
+      <span data-lang-inline="zh">招牌菜色</span>
+      <span data-lang-inline="en">Signature Dishes</span>
+      <span data-lang-inline="zu">Izidlo Ezidumile</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang-inline="zh">台灣家常，用心烹調</span>
+      <span data-lang-inline="en">Home-Cooked, Heart-Made</span>
+      <span data-lang-inline="zu">Ulungiselwe Ekhaya, Nentliziyo</span>
+    </h2>
+    <div class="section-title-zh">
+      <span data-lang-inline="zh">每道菜都是一封家書</span>
+      <span data-lang-inline="en">Every dish tells a story</span>
+      <span data-lang-inline="zu">Isidlo ngasinye silandisa indaba</span>
+    </div>
+    <div class="divider"></div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="menu-emoji">🍱</span>
+        <div class="menu-name">台式便當</div>
+        <div class="menu-name-en">Taiwanese Bento Box</div>
+        <div class="menu-desc">
+          <span data-lang-inline="zh">主菜配白飯、炒青菜與小菜，簡單卻是最深的滋味。</span>
+          <span data-lang-inline="en">Main protein with steamed rice, stir-fried greens and side dishes — simple, satisfying, soulful.</span>
+          <span data-lang-inline="zu">Inyama enkulu kanye nezitsha ezikhethekile — elula kepha liyeneliseka.</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-emoji">🥩</span>
+        <div class="menu-name">滷肉飯</div>
+        <div class="menu-name-en">Braised Pork Rice</div>
+        <div class="menu-desc">
+          <span data-lang-inline="zh">慢火滷製的五花肉，淋在白飯上，每口都是童年的記憶。</span>
+          <span data-lang-inline="en">Slow-braised pork belly over steamed rice. The definitive taste of Taiwanese childhood.</span>
+          <span data-lang-inline="zu">Inyama yokweluka echanywa phezu kwelayisi — ukudla okwenyuka umphefumulo.</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-emoji">🍜</span>
+        <div class="menu-name">牛肉麵</div>
+        <div class="menu-name-en">Beef Noodle Soup</div>
+        <div class="menu-desc">
+          <span data-lang-inline="zh">清燉或紅燒，牛肉麵是台灣最具代表性的靈魂食物。</span>
+          <span data-lang-inline="en">Clear broth or red-braised — Taiwan's most iconic soul food, bowl by comforting bowl.</span>
+          <span data-lang-inline="zu">Isambulela esikhethekile senyama yenkomo — ukudla okwenyuka umphefumulo.</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-emoji">🥟</span>
+        <div class="menu-name">水餃</div>
+        <div class="menu-name-en">Steamed Dumplings</div>
+        <div class="menu-desc">
+          <span data-lang-inline="zh">手工包製的水餃，皮薄餡飽，蘸醬吃最對味。</span>
+          <span data-lang-inline="en">Hand-wrapped dumplings with thin skin and generous filling. Perfect with our house dipping sauce.</span>
+          <span data-lang-inline="zu">Amadomu enziwe ngesandla — okumangalisayo ezindaweni zonke.</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-emoji">🥬</span>
+        <div class="menu-name">燙青菜</div>
+        <div class="menu-name-en">Blanched Greens</div>
+        <div class="menu-desc">
+          <span data-lang-inline="zh">時令青菜現點現燙，淋上蒜油，清爽解膩。</span>
+          <span data-lang-inline="en">Seasonal greens blanched to order, finished with garlic oil. Fresh, clean, essential.</span>
+          <span data-lang-inline="zu">Imifino yezikhathi yodwa — imsulwa futhi yempilo.</span>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-emoji">🍵</span>
+        <div class="menu-name">台灣飲品</div>
+        <div class="menu-name-en">Taiwanese Drinks</div>
+        <div class="menu-desc">
+          <span data-lang-inline="zh">從熱烏龍到冬瓜茶，每杯都是台灣街頭的記憶。</span>
+          <span data-lang-inline="en">From hot oolong to winter melon tea — a sip of Taiwan's vibrant street culture.</span>
+          <span data-lang-inline="zu">Iziphuzo zaseTaiwan — ngosizi nangoxolo.</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-footer">
+      <div class="menu-footer-text">
+        <span data-lang-inline="zh">菜單隨季節與食材供應調整，請透過 WhatsApp 查詢每日特餐。</span>
+        <span data-lang-inline="en">Menu changes seasonally. Contact us via WhatsApp for daily specials.</span>
+        <span data-lang-inline="zu">Imenyu iyaguquka ngesizini. Xhumana nathi nge-WhatsApp.</span>
+      </div>
+      <div class="menu-footer-highlight">
+        <span data-lang-inline="zh">外帶 · 外送 · 內用</span>
+        <span data-lang-inline="en">Takeaway · Delivery · Dine-in</span>
+        <span data-lang-inline="zu">Ukuthabatha · Ukuhambisa · Ukudla Lapha</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAKERY -->
+<section class="bakery-section" id="bakery">
+  <div class="section-inner">
+    <div class="bakery-grid">
+      <div>
+        <div class="bakery-banner">Sunning Bakery</div>
+        <div class="section-label">
+          <span data-lang-inline="zh">聯名烘焙</span>
+          <span data-lang-inline="en">Our Bakery Brand</span>
+          <span data-lang-inline="zu">I-Brand Yokubhaka</span>
+        </div>
+        <h2 class="section-title">
+          <span data-lang-inline="zh">烘焙的溫度</span>
+          <span data-lang-inline="en">The Warmth of Baking</span>
+          <span data-lang-inline="zu">Ukushisa Kokubhaka</span>
+        </h2>
+        <div class="divider"></div>
+        <div data-lang="zh">
+          <p style="color:#4a3a28;font-size:15px;margin-bottom:1rem;">Sunning Bakery 是江味齋的烘焙副品牌，以台灣麵包文化為根，在南非陽光下烘出帶有家的溫度的點心與麵包。</p>
+          <p style="color:#4a3a28;font-size:15px;">每一個鳳梨酥、每一條吐司，都是用時間與誠意烤出來的。</p>
+        </div>
+        <div data-lang="en">
+          <p style="color:#4a3a28;font-size:15px;margin-bottom:1rem;">Sunning Bakery is JiangWay's bakery sub-brand, rooted in Taiwanese bread culture — baked fresh under South African sunshine.</p>
+          <p style="color:#4a3a28;font-size:15px;">Every pineapple cake, every loaf is made with time and sincerity.</p>
+        </div>
+        <div data-lang="zu">
+          <p style="color:#4a3a28;font-size:15px;margin-bottom:1rem;">I-Sunning Bakery yisigaba sokubhaka sase-JiangWay, esisekelwe ku-Taiwanese bread culture — ibhakwa ngaphansi kwelanga laseMzansi Afrika.</p>
+        </div>
+        <div class="bakery-items">
+          <div class="bakery-item">
+            <div class="bakery-icon">🍍</div>
+            <div class="bakery-name">
+              <span data-lang-inline="zh">鳳梨酥</span>
+              <span data-lang-inline="en">Pineapple Cake</span>
+              <span data-lang-inline="zu">Ikhekhana ye-Pineapple</span>
+            </div>
+            <div class="bakery-desc">
+              <span data-lang-inline="zh">台灣最經典伴手禮</span>
+              <span data-lang-inline="en">Taiwan's iconic souvenir pastry</span>
+              <span data-lang-inline="zu">Isipho esidumile saseTaiwan</span>
+            </div>
+          </div>
+          <div class="bakery-item">
+            <div class="bakery-icon">🍞</div>
+            <div class="bakery-name">
+              <span data-lang-inline="zh">台式吐司</span>
+              <span data-lang-inline="en">Taiwanese Milk Bread</span>
+              <span data-lang-inline="zu">Isinkwa SaseTaiwan</span>
+            </div>
+            <div class="bakery-desc">
+              <span data-lang-inline="zh">軟綿拉絲，奶香濃郁</span>
+              <span data-lang-inline="en">Cloud-soft, milk-rich loaf</span>
+              <span data-lang-inline="zu">Isinkwa esithambile, esinotswala</span>
+            </div>
+          </div>
+          <div class="bakery-item">
+            <div class="bakery-icon">🥐</div>
+            <div class="bakery-name">
+              <span data-lang-inline="zh">奶油餐包</span>
+              <span data-lang-inline="en">Butter Dinner Rolls</span>
+              <span data-lang-inline="zu">Amarolisi Ebhotela</span>
+            </div>
+            <div class="bakery-desc">
+              <span data-lang-inline="zh">搭配任何餐點的完美選擇</span>
+              <span data-lang-inline="en">Perfect companion for any meal</span>
+              <span data-lang-inline="zu">Ihambisana nezidlo zonke</span>
+            </div>
+          </div>
+          <div class="bakery-item">
+            <div class="bakery-icon">🎂</div>
+            <div class="bakery-name">
+              <span data-lang-inline="zh">季節限定</span>
+              <span data-lang-inline="en">Seasonal Specials</span>
+              <span data-lang-inline="zu">Izidlo Zezikhathi</span>
+            </div>
+            <div class="bakery-desc">
+              <span data-lang-inline="zh">節慶特製烘焙，請洽詢</span>
+              <span data-lang-inline="en">Festival & celebration bakes</span>
+              <span data-lang-inline="zu">Izidlo zamaholide ezikhethekile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bakery-info">
+        <div class="bakery-logo-text">Sunning</div>
+        <div class="bakery-logo-sub">Bakery by JiangWay</div>
+        <h3>
+          <span data-lang-inline="zh">每日新鮮出爐</span>
+          <span data-lang-inline="en">Fresh Daily</span>
+          <span data-lang-inline="zu">Kukhishwa Nsuku Zonke</span>
+        </h3>
+        <p>
+          <span data-lang-inline="zh">烘焙品限量供應，售完為止。如需預訂，請提前透過 WhatsApp 聯繫我們。</span>
+          <span data-lang-inline="en">Baked goods are made in limited batches daily. Pre-orders available via WhatsApp.</span>
+          <span data-lang-inline="zu">Ukudla okubhakiwe kwenziwa ngemipaka yansuku zonke. Ukuphakela kwamukelwa nge-WhatsApp.</span>
+        </p>
+        <p>
+          <span data-lang-inline="zh">Sunning Bakery 保持獨立的視覺識別，與江味齋共享同一個廚房，同一份用心。</span>
+          <span data-lang-inline="en">Sunning Bakery maintains its own visual identity, sharing the same kitchen and the same heart as JiangWay.</span>
+          <span data-lang-inline="zu">I-Sunning Bakery inobunikazi bayo kodwa yabiwa ekhishini elinye.</span>
+        </p>
+        <p style="margin-top:1.5rem;">
+          <span data-lang-inline="zh">📍 同一地址取餐</span>
+          <span data-lang-inline="en">📍 Same location as JiangWay</span>
+          <span data-lang-inline="zu">📍 Endaweni efanayo neJiangWay</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="section-inner">
+    <div class="section-label">
+      <span data-lang-inline="zh">餐廳風貌</span>
+      <span data-lang-inline="en">Gallery</span>
+      <span data-lang-inline="zu">Izithombe</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang-inline="zh">走進江味齋</span>
+      <span data-lang-inline="en">A Peek Inside</span>
+      <span data-lang-inline="zu">Bheka Ngaphakathi</span>
+    </h2>
+    <div class="section-title-zh">
+      <span data-lang-inline="zh">每一個角落都有故事</span>
+      <span data-lang-inline="en">Every corner tells a story</span>
+      <span data-lang-inline="zu">Inkonco ngayinye inomlando</span>
+    </div>
+    <div class="divider"></div>
+    <div class="gallery-mosaic">
+      <div class="gallery-cell gc-1">
+        <span style="font-size:5rem;">🍱</span>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">招牌便當 Signature Bento</div></div>
+        <div class="gallery-caption" style="color:var(--gold-light)">台式便當</div>
+      </div>
+      <div class="gallery-cell gc-2">
+        <span>🥬</span>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">新鮮食材 Fresh Ingredients</div></div>
+        <div class="gallery-caption" style="color:var(--gold-light)">時令食材</div>
+      </div>
+      <div class="gallery-cell gc-3">
+        <span>🏮</span>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">台灣氛圍 Taiwanese Ambiance</div></div>
+        <div class="gallery-caption" style="color:var(--gold-light)">餐廳環境</div>
+      </div>
+      <div class="gallery-cell gc-4">
+        <span>🍵</span>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">茶飲 Tea Service</div></div>
+        <div class="gallery-caption" style="color:var(--gold-light)">台灣茶</div>
+      </div>
+      <div class="gallery-cell gc-5">
+        <span style="font-size:5rem;">👨‍🍳</span>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">用心料理 Made with Love</div></div>
+        <div class="gallery-caption" style="color:var(--gold-light)">廚師傅</div>
+      </div>
+      <div class="gallery-cell gc-6">
+        <span>🍍</span>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">烘焙出爐 Fresh Baked</div></div>
+        <div class="gallery-caption" style="color:var(--gold-light)">鳳梨酥</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:13px;color:#8a7060;">
+      <span data-lang-inline="zh">📸 更多照片請追蹤我們的 WhatsApp 社群</span>
+      <span data-lang-inline="en">📸 Follow our WhatsApp community for more photos</span>
+      <span data-lang-inline="zu">📸 Landela umphakathi wethu we-WhatsApp ukuze uthole izithombe eziningi</span>
+    </p>
+  </div>
+</section>
+
+<!-- CORPORATE -->
+<section class="corporate-section" id="corporate">
+  <div class="section-inner">
+    <div class="section-label">
+      <span data-lang-inline="zh">企業服務</span>
+      <span data-lang-inline="en">Corporate</span>
+      <span data-lang-inline="zu">Amabhizinisi</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang-inline="zh">企業餐券計畫</span>
+      <span data-lang-inline="en">Meal Voucher Program</span>
+      <span data-lang-inline="zu">Uhlelo Lwamavawusha</span>
+    </h2>
+    <div class="section-title-zh">
+      <span data-lang-inline="zh">讓台灣味成為您員工福利的一部分</span>
+      <span data-lang-inline="en">Make Taiwanese food part of your employee benefits</span>
+      <span data-lang-inline="zu">Yenza ukudla kwaseTaiwan kube yingxenye yezinzuzo zabasebenzi bakho</span>
+    </div>
+    <div class="divider"></div>
+    <div class="voucher-wrap">
+      <div class="voucher-visual">
+        <div class="voucher-card">
+          <div class="voucher-header">
+            <div>
+              <div class="voucher-brand">江味齋</div>
+              <div class="voucher-brand-en">JiangWay Meal Voucher</div>
+            </div>
+            <div>
+              <div class="voucher-amount">R100</div>
+              <div class="voucher-amount-label">Face Value</div>
+            </div>
+          </div>
+          <div style="font-size:13px;color:#6a5040;line-height:1.7;">
+            <span data-lang-inline="zh">本券可於江味齋消費折抵 R100，適用於外帶、外送及內用訂單。</span>
+            <span data-lang-inline="en">Redeemable at JiangWay for R100 off your order. Valid for takeaway, delivery and dine-in.</span>
+            <span data-lang-inline="zu">Isebenzela ku-JiangWay nge-R100 ephunziwe. Isebenza kwo-takeaway, delivery noma dine-in.</span>
+          </div>
+          <div class="voucher-divider-dots">
+            <div class="voucher-dot-line"></div>
+          </div>
+          <div class="voucher-footer">
+            <div class="voucher-valid">
+              <span data-lang-inline="zh">有效期：購買後 6 個月</span>
+              <span data-lang-inline="en">Valid: 6 months from purchase</span>
+              <span data-lang-inline="zu">Isebenza: izinyanga eziyisi-6 emva kokuthenga</span>
+            </div>
+            <div class="voucher-code">JW-2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="corporate-info">
+        <h3>
+          <span data-lang-inline="zh">批量購買方案</span>
+          <span data-lang-inline="en">Bulk Purchase Tiers</span>
+          <span data-lang-inline="zu">Izingqangi Zokuthenga Kanyekanye</span>
+        </h3>
+        <ul class="tier-list">
+          <li>
+            <span class="tier-badge">5–10</span>
+            <span class="tier-text">
+              <span data-lang-inline="zh">R100/張 · 標準價格</span>
+              <span data-lang-inline="en">R100 each · Standard rate</span>
+              <span data-lang-inline="zu">R100 ngayinye · Inani elivamile</span>
+            </span>
+          </li>
+          <li>
+            <span class="tier-badge">11–30</span>
+            <span class="tier-text">
+              <span data-lang-inline="zh">優惠方案，請詢價</span>
+              <span data-lang-inline="en">Preferential rate, enquire</span>
+              <span data-lang-inline="zu">Inani elikhethekile, buza</span>
+            </span>
+          </li>
+          <li>
+            <span class="tier-badge">30+</span>
+            <span class="tier-text">
+              <span data-lang-inline="zh">企業客製方案 + 免費宣傳</span>
+              <span data-lang-inline="en">Custom corporate plan + promo</span>
+              <span data-lang-inline="zu">Uhlelo lwebhizinisi + ukukhangisa kwamahhala</span>
+            </span>
+          </li>
+        </ul>
+        <p>
+          <span data-lang-inline="zh">適合企業員工福利、客戶禮品、節慶贈禮使用。聯繫我們取得企業報價。</span>
+          <span data-lang-inline="en">Ideal for employee welfare, client gifts, and festive gifting. Contact us for a corporate quote.</span>
+          <span data-lang-inline="zu">Ifaneleka izinzuzo zabasebenzi, izipho zamakhasimende, nezipho zamaholide.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="location">
+  <div class="section-inner">
+    <div class="section-label">
+      <span data-lang-inline="zh">找到我們</span>
+      <span data-lang-inline="en">Find Us</span>
+      <span data-lang-inline="zu">Thola Thina</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang-inline="zh">地址與時間</span>
+      <span data-lang-inline="en">Location & Hours</span>
+      <span data-lang-inline="zu">Indawo Nesikhathi</span>
+    </h2>
+    <div class="divider"></div>
+    <div class="location-grid">
+      <div class="location-map-placeholder">
+        <div class="map-icon">📍</div>
+        <div class="map-text" style="text-align:center;">
+          <strong style="font-family:var(--font-serif);font-size:16px;color:var(--ink);">Edenburg, Sandton</strong><br>
+          <span style="font-size:13px;color:#8a7060;">Johannesburg, South Africa</span>
+        </div>
+        <a href="https://maps.google.com" target="_blank" style="margin-top:0.5rem;font-size:12px;color:var(--gold);letter-spacing:0.1em;text-decoration:none;border-bottom:1px solid var(--gold);">
+          <span data-lang-inline="zh">在 Google 地圖查看 →</span>
+          <span data-lang-inline="en">View on Google Maps →</span>
+          <span data-lang-inline="zu">Buka ku-Google Maps →</span>
+        </a>
+      </div>
+      <div>
+        <div class="info-block">
+          <div class="info-block-label">
+            <span data-lang-inline="zh">地址</span>
+            <span data-lang-inline="en">Address</span>
+            <span data-lang-inline="zu">Ikheli</span>
+          </div>
+          <div class="info-block-content">
+            <strong>Edenburg, Sandton</strong><br>
+            Johannesburg, Gauteng<br>
+            South Africa
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">
+            <span data-lang-inline="zh">營業時間</span>
+            <span data-lang-inline="en">Opening Hours</span>
+            <span data-lang-inline="zu">Amahora Okusebenza</span>
+          </div>
+          <div class="hours-grid">
+            <div class="hours-day">
+              <span data-lang-inline="zh">週一至週五</span>
+              <span data-lang-inline="en">Mon – Fri</span>
+              <span data-lang-inline="zu">Mso – Lwe</span>
+            </div>
+            <div class="hours-time">11:00 – 20:00</div>
+            <div class="hours-day">
+              <span data-lang-inline="zh">週六</span>
+              <span data-lang-inline="en">Saturday</span>
+              <span data-lang-inline="zu">Mgqibelo</span>
+            </div>
+            <div class="hours-time">10:00 – 18:00</div>
+            <div class="hours-day">
+              <span data-lang-inline="zh">週日</span>
+              <span data-lang-inline="en">Sunday</span>
+              <span data-lang-inline="zu">Sonto</span>
+            </div>
+            <div class="hours-time">
+              <span data-lang-inline="zh">依需求開放，請詢問</span>
+              <span data-lang-inline="en">By arrangement</span>
+              <span data-lang-inline="zu">Ngokuhlelwa</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">WhatsApp</div>
+          <div class="info-block-content">
+            <span data-lang-inline="zh">透過 WhatsApp 預訂或查詢每日特餐</span>
+            <span data-lang-inline="en">WhatsApp us to order or check daily specials</span>
+            <span data-lang-inline="zu">Thumela i-WhatsApp ukuphakela noma ukubuza</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="section-label">
+      <span data-lang-inline="zh">聯絡我們</span>
+      <span data-lang-inline="en">Contact Us</span>
+      <span data-lang-inline="zu">Xhumana Nathi</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang-inline="zh">歡迎隨時聯繫</span>
+      <span data-lang-inline="en">We'd Love to Hear from You</span>
+      <span data-lang-inline="zu">Sithanda Ukuzwa Kuwe</span>
+    </h2>
+    <div class="section-title-zh">
+      <span data-lang-inline="zh">訂餐、詢問、預訂，我們都在</span>
+      <span data-lang-inline="en">Order, enquire, or book — we're here</span>
+      <span data-lang-inline="zu">Phakela, buza, noma bhuka — silapha</span>
+    </div>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">💬</div>
+        <div class="contact-method">WhatsApp</div>
+        <div class="contact-value">
+          <span data-lang-inline="zh">主要聯絡方式<br>訂餐 · 詢問 · 企業洽談</span>
+          <span data-lang-inline="en">Primary contact<br>Orders · Enquiries · Corporate</span>
+          <span data-lang-inline="zu">Indlela yokuqala yokuxhumana</span>
+        </div>
+        <a href="https://wa.me/" class="contact-action">
+          <span data-lang-inline="zh">傳訊息</span>
+          <span data-lang-inline="en">Message Us</span>
+          <span data-lang-inline="zu">Thumela Umlayezo</span>
+        </a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <div class="contact-method">
+          <span data-lang-inline="zh">Google 商家</span>
+          <span data-lang-inline="en">Google Business</span>
+          <span data-lang-inline="zu">I-Google Business</span>
+        </div>
+        <div class="contact-value">
+          <span data-lang-inline="zh">搜尋「江味齋 JiangWay」<br>查看評論與最新資訊</span>
+          <span data-lang-inline="en">Search "JiangWay" on Google<br>for reviews and updates</span>
+          <span data-lang-inline="zu">Sesha "JiangWay" ku-Google</span>
+        </div>
+        <a href="https://www.google.com/search?q=JiangWay+Sandton" target="_blank" class="contact-action">
+          <span data-lang-inline="zh">查看</span>
+          <span data-lang-inline="en">Search</span>
+          <span data-lang-inline="zu">Sesha</span>
+        </a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🏢</div>
+        <div class="contact-method">
+          <span data-lang-inline="zh">企業合作</span>
+          <span data-lang-inline="en">Corporate Enquiry</span>
+          <span data-lang-inline="zu">Imibuzo Yamabhizinisi</span>
+        </div>
+        <div class="contact-value">
+          <span data-lang-inline="zh">餐券計畫 · 員工福利<br>客製化服務洽談</span>
+          <span data-lang-inline="en">Meal vouchers · Employee welfare<br>Customised solutions</span>
+          <span data-lang-inline="zu">Amavawusha · Izinzuzo zabasebenzi</span>
+        </div>
+        <a href="https://wa.me/" class="contact-action">
+          <span data-lang-inline="zh">洽談合作</span>
+          <span data-lang-inline="en">Get in Touch</span>
+          <span data-lang-inline="zu">Xhumana</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">江味齋</div>
+  <div class="footer-en">JiangWay · Sunning Bakery</div>
+  <div class="footer-meta">
+    Edenburg, Sandton · Johannesburg · South Africa · Est. 2025<br>
+    <span style="margin-top:8px;display:block;">Intelage Trading CC</span>
+  </div>
+</footer>
+
+<script>
+function setLang(lang, btn) {
+  document.body.className = 'lang-' + lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : lang === 'en' ? 'en' : 'zu';
+}
+</script>
+</body>
+</html>
