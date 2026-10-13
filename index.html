@@ -405,6 +405,8 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
 .menu-item{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px dashed rgba(176,141,87,0.35)}
 .mi-thumb{flex:0 0 84px;width:84px;height:84px;border-radius:6px;overflow:hidden;background:var(--paper-warm);border:1px solid rgba(176,141,87,0.25);display:flex;align-items:center;justify-content:center;font-size:34px}
 .mi-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.mi-thumb{position:relative}
+.mi-illus{position:absolute;left:0;right:0;bottom:0;background:rgba(26,20,17,0.62);color:#fff;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.5px;text-align:center;padding:1px 0;line-height:1.5}
 .mi-text{flex:1;min-width:0}
 .menu-item.out .mi-thumb{filter:grayscale(1);opacity:.55}
 .mi-cn{font-size:18px;font-weight:500;color:var(--ink);letter-spacing:1px}
@@ -814,8 +816,9 @@ const MENU=[
 
 const CAT_LABEL={b:{zh:"便當",en:"Bento",zu:"I-Bento"},a:{zh:"單點",en:"À la carte",zu:"Okukodwa"},n:{zh:"麵類",en:"Noodles",zu:"Amanoodle"},d:{zh:"飲料",en:"Drinks",zu:"Iziphuzo"},f:{zh:"冷凍商品",en:"Frozen",zu:"Okuqandisiwe"}};
 const CAT_NOTE={b:{zh:"含 3 樣小菜",en:"With 3 side dishes",zu:"Kuhambisana nezinto ezi-3"}};
-// 實拍照片（Hans 提供，已裁掉文字）；其他品項暫用分類圖示
-const PHOTOS={b1:1,b2:1,b4:1,b5:1,a7:1};
+// 菜色圖片：real=實拍照片（Hans 提供），ai=AI 示意圖；飲料與冷凍商品用分類圖示
+const PHOTOS={b1:'real',b2:'real',b4:'real',b5:'real',a7:'real',b3:'ai',b6:'ai',b7:'ai',b8:'ai',b9:'ai',a1:'ai',a2:'ai',a3:'ai',a4:'ai',a5:'ai',a6:'ai',a8:'ai',a9:'ai',a10:'ai',a11:'ai',n1:'ai',n2:'ai',n3:'ai'};
+const ILLUS={zh:"示意圖",en:"Illustration",zu:"Umfanekiso"};
 const CAT_ICON={b:"🍱",a:"🍢",n:"🍜",d:"🥤",f:"🧊"};
 const SOLD={zh:"售完",en:"Sold out",zu:"Kuphelile"};
 let soldOut={},curCat=0;
@@ -830,7 +833,7 @@ function renderMenu(){
   panel.setAttribute('aria-labelledby','mt'+curCat);
   panel.innerHTML=(note?`<div class="menu-cat-note">${L(note)}</div>`:'')+'<ul class="menu-list">'+c.items.map(it=>{
     const out=!!soldOut[it.id];
-    const th=PHOTOS[it.id]?`<img src="images/${it.id}.webp" alt="${esc(it.name)} ${esc(it.nameEn)}" loading="lazy" decoding="async" width="800" height="800">`:`<span aria-hidden="true">${CAT_ICON[it.id.charAt(0)]}</span>`;
+    const th=PHOTOS[it.id]?`<img src="images/${it.id}.webp" alt="${esc(it.name)} ${esc(it.nameEn)}" loading="lazy" decoding="async" width="800" height="800">${PHOTOS[it.id]==='ai'?`<span class="mi-illus">${L(ILLUS)}</span>`:''}`:`<span aria-hidden="true">${CAT_ICON[it.id.charAt(0)]}</span>`;
     return `<li class="menu-item${out?' out':''}" data-id="${it.id}"><div class="mi-thumb">${th}</div><div class="mi-text"><div class="mi-cn">${esc(it.name)}${out?`<span class="mi-badge">${L(SOLD)}</span>`:''}</div><div class="mi-en">${esc(it.nameEn)}</div></div><div class="mi-price">R${it.price}</div></li>`;
   }).join('')+'</ul>';
 }
