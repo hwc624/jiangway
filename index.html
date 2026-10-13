@@ -193,7 +193,7 @@ nav.scrolled .lang-switch button{border-color:rgba(176,141,87,0.4);color:var(--i
 @keyframes scrolldown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.1%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ============ 區段共用 ============ */
-section{position:relative;z-index:1}
+section{position:relative;z-index:1;scroll-margin-top:60px}
 .wrap{max-width:1200px;margin:0 auto;padding:0 48px}
 .sec-pad{padding:130px 0}
 .sec-label{
@@ -391,6 +391,26 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
   .about-stat:last-child{border-bottom:none}
   .bakery-items{grid-template-columns:1fr}
 }
+
+/* ============ 完整菜單 ============ */
+.menu{background:var(--cream)}
+.menu .sec-title{margin-bottom:18px}
+.menu-note{color:var(--ink-soft);font-size:15px;font-weight:300;margin-bottom:36px}
+.menu-tabs{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;margin-bottom:34px;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+.menu-tabs button{flex:0 0 auto;background:transparent;border:1px solid rgba(176,141,87,0.45);color:var(--ink-soft);
+  padding:10px 18px;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;cursor:pointer;border-radius:2px;transition:all .3s}
+.menu-tabs button[aria-selected="true"]{background:var(--cinnabar);border-color:var(--cinnabar);color:var(--paper)}
+.menu-cat-note{font-size:13px;color:var(--jade);font-family:'Inter',sans-serif;margin-bottom:16px}
+.menu-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px;list-style:none}
+.menu-item{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px dashed rgba(176,141,87,0.35)}
+.mi-cn{font-size:18px;font-weight:500;color:var(--ink);letter-spacing:1px}
+.mi-en{font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:300}
+.mi-price{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--cinnabar);white-space:nowrap}
+.menu-item.out .mi-cn,.menu-item.out .mi-en,.menu-item.out .mi-price{color:#9a8f86}
+.menu-item.out .mi-price{text-decoration:line-through}
+.mi-badge{display:inline-block;margin-left:8px;background:#6b6159;color:#fff;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1px;padding:2px 8px;border-radius:2px;vertical-align:middle}
+@media(max-width:900px){.menu-list{grid-template-columns:1fr}.mi-cn{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,.hero-tag,.hero h1,.hero-sub,.hero-desc,.hero-cta{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -404,7 +424,8 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
   <button class="nav-toggle" id="navToggle" aria-label="選單"><span></span><span></span><span></span></button>
   <div class="nav-links" id="navLinks">
     <a href="#about"><span class="lang-zh">關於</span><span class="lang-en">About</span><span class="lang-zu">Ngathi</span></a>
-    <a href="#dishes"><span class="lang-zh">菜色</span><span class="lang-en">Menu</span><span class="lang-zu">Idina</span></a>
+    <a href="#dishes"><span class="lang-zh">菜色</span><span class="lang-en">Dishes</span><span class="lang-zu">Izidlo</span></a>
+    <a href="#menu"><span class="lang-zh">菜單</span><span class="lang-en">Menu</span><span class="lang-zu">Imenyu</span></a>
     <a href="#bakery"><span class="lang-zh">烘焙</span><span class="lang-en">Bakery</span><span class="lang-zu">Ibhekari</span></a>
     <a href="#vouchers"><span class="lang-zh">餐券</span><span class="lang-en">Vouchers</span><span class="lang-zu">Amavawutsha</span></a>
     <a href="#contact"><span class="lang-zh">聯絡</span><span class="lang-en">Contact</span><span class="lang-zu">Thintana</span></a>
@@ -433,11 +454,6 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
       <span class="lang-zu">Siletha umoya wamakhishi aseTaiwan eJohannesburg. Isidlo ngasinye yindaba yenkumbulo nokufudumala.</span>
     </p>
     <div class="hero-cta">
-      <a href="https://zippy-taiyaki-83988c.netlify.app" class="btn btn-primary" target="_blank">
-        <span class="lang-zh">線上訂餐 →</span>
-        <span class="lang-en">Order Online →</span>
-        <span class="lang-zu">Oda Online →</span>
-      </a>
       <a href="#dishes" class="btn btn-ghost">
         <span class="lang-zh">瀏覽菜色</span>
         <span class="lang-en">Explore Menu</span>
@@ -469,15 +485,15 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
         </h2>
         <div class="lang-zh">
           <p class="drop">江味齋自 2025 年於 Edenburg 開業，秉持「用心做菜、講究食材」的信念，將台灣家傳的料理手藝，原汁原味呈現在南非的餐桌上。</p>
-          <p>從酥香排骨、滷得入味的控肉，到一碗熱騰騰的牛肉麵，我們相信，真正的好味道，來自於對細節的執著與對家鄉的思念。無論內用、外帶、外送，江味齋都希望成為你在異鄉最熟悉的那盞燈火。</p>
+          <p>從酥香排骨、滷得入味的控肉，到一碗熱騰騰的肉羹麵，我們相信，真正的好味道，來自於對細節的執著與對家鄉的思念。無論內用、外帶、外送，江味齋都希望成為你在異鄉最熟悉的那盞燈火。</p>
         </div>
         <div class="lang-en">
           <p class="drop">Founded in 2025 in Edenburg, JiangWay is built on a simple belief — cook with heart, source with care — bringing the genuine flavours of Taiwanese home cooking to South African tables.</p>
-          <p>From crispy pork chops to slow-braised pork belly and a steaming bowl of beef noodle soup, we believe great taste comes from devotion to detail and longing for home. Dine in, take away, or have it delivered — JiangWay hopes to be your most familiar light away from home.</p>
+          <p>From crispy pork chops to slow-braised pork belly and a steaming bowl of pork thick soup noodles, we believe great taste comes from devotion to detail and longing for home. Dine in, take away, or have it delivered — JiangWay hopes to be your most familiar light away from home.</p>
         </div>
         <div class="lang-zu">
           <p class="drop">Yasungulwa ngo-2025 e-Edenburg, i-JiangWay yakhelwe enkolelweni elula — pheka ngenhliziyo — iletha ukunambitha kweqiniso kokupheka kwasekhaya kwaseTaiwan.</p>
-          <p>Kusukela ezinkomeni ezikhwabanisiwe kuya esobho lwenkomo, sikholelwa ukuthi ukunambitha okuhle kuvela ekuzinikeleni. Yidlela ngaphakathi, uyithathe, noma ilethwe — i-JiangWay ifuna ukuba ngukukhanya kwakho okujwayelekile.</p>
+          <p>Kusukela ezinkomeni ezikhwabanisiwe kuya esobho lengulube, sikholelwa ukuthi ukunambitha okuhle kuvela ekuzinikeleni. Yidlela ngaphakathi, uyithathe, noma ilethwe — i-JiangWay ifuna ukuba ngukukhanya kwakho okujwayelekile.</p>
         </div>
         <div class="about-stats">
           <div class="about-stat">
@@ -559,15 +575,6 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
       <div class="dish reveal">
         <div class="dish-num">04</div>
         <div class="dish-body">
-          <div class="dish-cn"><span class="lang-zh">牛肉麵</span><span class="lang-en">Beef Noodle</span><span class="lang-zu">Inkomo Nezinodlu</span></div>
-          <div class="dish-en">Taiwanese Beef Noodle Soup</div>
-          <div class="dish-desc"><span class="lang-zh">濃郁牛骨高湯、軟嫩牛肉與彈牙麵條，台灣國民美食。</span><span class="lang-en">Rich beef bone broth, tender beef and springy noodles — Taiwan's national dish.</span><span class="lang-zu">Isobho elinothile, inyama ethambile namanodlu.</span></div>
-          <div class="dish-line"></div>
-        </div>
-      </div>
-      <div class="dish reveal">
-        <div class="dish-num">05</div>
-        <div class="dish-body">
           <div class="dish-cn"><span class="lang-zh">蔥油餅加蛋</span><span class="lang-en">Scallion Crepe</span><span class="lang-zu">I-Scallion Crepe</span></div>
           <div class="dish-en">Scallion Egg Crepe</div>
           <div class="dish-desc"><span class="lang-zh">外酥內Q的手工蔥油餅，包入金黃煎蛋，香氣四溢。</span><span class="lang-en">Handmade scallion crepe — crispy outside, chewy inside, wrapped around a golden egg.</span><span class="lang-zu">I-crepe eyenziwe ngesandla, ekhanyayo ngaphandle.</span></div>
@@ -575,15 +582,27 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
         </div>
       </div>
       <div class="dish reveal">
-        <div class="dish-num">06</div>
+        <div class="dish-num">05</div>
         <div class="dish-body">
-          <div class="dish-cn"><span class="lang-zh">素食便當</span><span class="lang-en">Vegetarian</span><span class="lang-zu">Okwemifino</span></div>
+          <div class="dish-cn"><span class="lang-zh">素食飯</span><span class="lang-en">Vegetarian</span><span class="lang-zu">Okwemifino</span></div>
           <div class="dish-en">Vegetarian Bento</div>
           <div class="dish-desc"><span class="lang-zh">嚴選時令蔬食與豆製品，清爽健康也能滿足味蕾。</span><span class="lang-en">Seasonal vegetables and tofu — light, healthy, and deeply satisfying.</span><span class="lang-zu">Imifino yesizini ne-tofu — ekhululekile futhi enempilo.</span></div>
           <div class="dish-line"></div>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- 完整菜單（品項、價格、id 與點餐系統 MENU 相同） -->
+<section class="menu sec-pad" id="menu">
+  <div class="wrap">
+    <div class="sec-label"><span class="lang-zh">完整菜單</span><span class="lang-en">Full Menu</span><span class="lang-zu">Imenyu Ephelele</span></div>
+    <h2 class="sec-title"><span class="lang-zh">今日<em>菜單</em></span><span class="lang-en">Our <em>Menu</em></span><span class="lang-zu">Imenyu <em>Yethu</em></span></h2>
+    <p class="menu-note"><span class="lang-zh">價格以南非蘭特 (R) 計，售完狀態即時更新。</span><span class="lang-en">Prices in South African Rand (R). Sold-out status updates live.</span><span class="lang-zu">Amanani ngama-Rand (R). Isimo sokuphela sibuyekezwa ngokushesha.</span></p>
+    <div class="menu-tabs" id="menuTabs" role="tablist"></div>
+    <div id="menuPanel" role="tabpanel"></div>
   </div>
 </section>
 
@@ -677,7 +696,7 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
       </div>
     </div>
     <div class="v-cta-wrap reveal">
-      <a href="https://wa.me/27791325590?text=您好，我對江味齋的企業餐券方案有興趣，想了解更多。" class="btn btn-primary" target="_blank">
+      <a href="https://wa.me/27791325590?text=您好，我對江味齋的企業餐券方案有興趣，想了解更多。" class="btn btn-primary" target="_blank" rel="noopener">
         <span class="lang-zh">洽詢企業方案 →</span>
         <span class="lang-en">Enquire Now →</span>
         <span class="lang-zu">Buza Manje →</span>
@@ -708,20 +727,20 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
         <p>Edenburg, Rivonia</p>
         <p>Johannesburg, 2191</p>
         <div class="c-links">
-          <a href="https://maps.google.com/maps/search/32+Wessel+Rd,+Edenburg,+Rivonia,+Johannesburg" target="_blank">📍 Google Maps</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=32+Wessel+Rd%2C+Edenburg%2C+Rivonia%2C+Johannesburg" target="_blank" rel="noopener">📍 Google Maps</a>
         </div>
       </div>
       <div class="c-block reveal">
         <h4><span class="lang-zh">營業時間</span><span class="lang-en">Hours</span><span class="lang-zu">Amahora</span></h4>
         <p><strong><span class="lang-zh">週一至週六</span><span class="lang-en">Mon – Sat</span><span class="lang-zu">Msombuluko – Mgqibelo</span></strong>　10:30 – 19:00</p>
-        <p><strong><span class="lang-zh">週日</span><span class="lang-en">Sunday</span><span class="lang-zu">ISonto</span></strong>　10:30 – 14:00</p>
+        <p><strong><span class="lang-zh">週日</span><span class="lang-en">Sunday</span><span class="lang-zu">ISonto</span></strong>　<span class="lang-zh">公休</span><span class="lang-en">Closed</span><span class="lang-zu">Kuvaliwe</span></p>
       </div>
       <div class="c-block reveal">
         <h4><span class="lang-zh">聯繫方式</span><span class="lang-en">Reach Us</span><span class="lang-zu">Sithinte</span></h4>
         <p><strong>WhatsApp</strong>　+27 79 132 5590</p>
         <p><strong>Email</strong>　info@jiangway.co.za</p>
         <div class="c-links">
-          <a href="https://wa.me/27791325590" target="_blank">💬 WhatsApp</a>
+          <a href="https://wa.me/27791325590" target="_blank" rel="noopener">💬 WhatsApp</a>
           <a href="mailto:info@jiangway.co.za">✉ Email</a>
         </div>
       </div>
@@ -733,7 +752,7 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
 <footer>
   <div class="f-logo"><span class="f-seal">江</span><span>江味齋 JiangWay</span></div>
   <div class="f-line"></div>
-  <p>© 2025 Intelage Trading CC ·
+  <p>© <span id="yr">2026</span> Intelage Trading CC ·
     <span class="lang-zh">台灣家常料理 · 約翰尼斯堡</span>
     <span class="lang-en">Taiwanese Home Cooking · Johannesburg</span>
     <span class="lang-zu">Ukudla KwaseTaiwan · eGoli</span>
@@ -741,6 +760,89 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
 </footer>
 
 <script>
+
+// ===== 完整菜單：資料直接複製自點餐系統 MENU（hwc624/jiangway-order-system index.html，commit 7fec755）=====
+const MENU=[
+  {cat:"便當類 BENTO (含3樣小菜 / with 3 side dishes)",items:[
+    {id:"b1",name:"排骨飯",nameEn:"Fry Pork Chop Bento",price:130},
+    {id:"b2",name:"滷排飯",nameEn:"Braised Pork Chop Bento",price:140},
+    {id:"b3",name:"蜜汁雞飯",nameEn:"Honey Glazed Chicken Bento",price:140},
+    {id:"b4",name:"椒麻雞飯",nameEn:"TW Pepper Chicken Bento",price:140},
+    {id:"b5",name:"控肉飯",nameEn:"Braised Pork Belly Bento",price:140},
+    {id:"b6",name:"雞排飯",nameEn:"Fry Chicken Cutlet Bento",price:140},
+    {id:"b7",name:"刷醬雞排飯",nameEn:"Brushed Fry Chicken Bento",price:140},
+    {id:"b8",name:"素食飯",nameEn:"Vegetarian Bento",price:130},
+    {id:"b9",name:"肉羹飯",nameEn:"Pork Thick Soup Rice Bento",price:130},
+  ]},
+  {cat:"單點 A LA CARTE",items:[
+    {id:"a1",name:"蔥油餅＋蛋（胡椒鹽）",nameEn:"Scallion Egg Crepe (Pepper Salt)",price:45},
+    {id:"a2",name:"蔥油餅＋蛋（刷醬）",nameEn:"Scallion Egg Crepe (Sauced)",price:50},
+    {id:"a3",name:"炸甜不辣",nameEn:"Fried Fish Cakes",price:50},
+    {id:"a4",name:"炸花枝丸",nameEn:"Fried Squid Balls",price:55},
+    {id:"a5",name:"炸芋籤",nameEn:"Fry Taro Cube",price:65},
+    {id:"a6",name:"滷肉飯",nameEn:"Braised Pork Mince Rice",price:75},
+    {id:"a7",name:"鹽酥雞",nameEn:"Popcorn Chicken",price:90},
+    {id:"a8",name:"刷醬雞排",nameEn:"Brushed Sauce Chicken Cutlet",price:90},
+    {id:"a9",name:"蜜汁雞排",nameEn:"Honey Glazed Chicken Cutlet",price:90},
+    {id:"a10",name:"炒青菜",nameEn:"Stir-fried Vegetables",price:50},
+    {id:"a11",name:"肉羹湯",nameEn:"Pork Thick Soup",price:100},
+  ]},
+  {cat:"麵類 NOODLE",items:[
+    {id:"n1",name:"肉羹麵",nameEn:"Pork Thick Soup Noodle",price:130},
+    {id:"n2",name:"榨菜肉絲麵",nameEn:"Shredded Pork & Pickled Veg Noodle",price:130},
+    {id:"n3",name:"滷排麵",nameEn:"Braised Pork Chop Noodle",price:140},
+  ]},
+  {cat:"飲料 DRINKS",items:[
+    {id:"d1",name:"麥香紅茶",nameEn:"Wheat Black Tea",price:20},
+    {id:"d2",name:"麥香奶茶",nameEn:"Wheat Milk Tea",price:20},
+    {id:"d3",name:"猛將黑豆漿",nameEn:"Black Soybean Milk",price:30},
+    {id:"d4",name:"猛將椰奶",nameEn:"Coconut Milk Drink",price:30},
+    {id:"d5",name:"黑松沙士",nameEn:"Heysong Sarsaparilla",price:30},
+    {id:"d6",name:"Valpre 礦泉水",nameEn:"Valpre Still Water",price:20},
+    {id:"d7",name:"Valpre 氣泡水",nameEn:"Valpre Sparkling Water",price:20},
+    {id:"d8",name:"可爾必思",nameEn:"Calpis",price:30},
+    {id:"d9",name:"阿薩姆奶茶",nameEn:"Assam Milk Tea",price:20},
+  ]},
+  {cat:"🧊 冷凍商品 FROZEN ITEMS",items:[
+    {id:"f1",name:"芋粿巧（4個）",nameEn:"Taro Cake (4pcs)",price:90},
+  ]},
+];
+
+const CAT_LABEL={b:{zh:"便當",en:"Bento",zu:"I-Bento"},a:{zh:"單點",en:"À la carte",zu:"Okukodwa"},n:{zh:"麵類",en:"Noodles",zu:"Amanoodle"},d:{zh:"飲料",en:"Drinks",zu:"Iziphuzo"},f:{zh:"冷凍商品",en:"Frozen",zu:"Okuqandisiwe"}};
+const CAT_NOTE={b:{zh:"含 3 樣小菜",en:"With 3 side dishes",zu:"Kuhambisana nezinto ezi-3"}};
+const SOLD={zh:"售完",en:"Sold out",zu:"Kuphelile"};
+let soldOut={},curCat=0;
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const L=o=>`<span class="lang-zh">${esc(o.zh)}</span><span class="lang-en">${esc(o.en)}</span><span class="lang-zu">${esc(o.zu)}</span>`;
+const catKey=c=>c.items[0].id.charAt(0);
+function renderMenu(){
+  const tabs=document.getElementById('menuTabs'),panel=document.getElementById('menuPanel');
+  if(!tabs||!panel)return;
+  tabs.innerHTML=MENU.map((c,i)=>`<button role="tab" id="mt${i}" aria-selected="${i===curCat}" data-i="${i}">${L(CAT_LABEL[catKey(c)])}</button>`).join('');
+  const c=MENU[curCat],note=CAT_NOTE[catKey(c)];
+  panel.setAttribute('aria-labelledby','mt'+curCat);
+  panel.innerHTML=(note?`<div class="menu-cat-note">${L(note)}</div>`:'')+'<ul class="menu-list">'+c.items.map(it=>{
+    const out=!!soldOut[it.id];
+    return `<li class="menu-item${out?' out':''}" data-id="${it.id}"><div><div class="mi-cn">${esc(it.name)}${out?`<span class="mi-badge">${L(SOLD)}</span>`:''}</div><div class="mi-en">${esc(it.nameEn)}</div></div><div class="mi-price">R${it.price}</div></li>`;
+  }).join('')+'</ul>';
+}
+document.getElementById('menuTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;curCat=+b.dataset.i;renderMenu();});
+renderMenu();
+// 售完同步：公開讀取 Firebase RTDB /soldOut（格式 {itemId:true/false}），失敗時菜單照常顯示
+const SOLD_URL='https://jiangway-bk-end-management-default-rtdb.asia-southeast1.firebasedatabase.app/soldOut.json';
+function applySold(d){soldOut=(d&&typeof d==='object')?d:{};renderMenu();}
+function pollSold(){fetch(SOLD_URL,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(d!==undefined)applySold(d)}).catch(()=>{});}
+try{
+  if(window.EventSource){
+    const es=new EventSource(SOLD_URL);
+    es.addEventListener('put',ev=>{try{const m=JSON.parse(ev.data);
+      if(m.path==='/')applySold(m.data);
+      else{const id=m.path.replace(/^\//,'').split('/')[0];soldOut={...soldOut,[id]:m.data};renderMenu();}}catch(e){}});
+    es.addEventListener('patch',ev=>{try{const m=JSON.parse(ev.data);if(m.path==='/'){soldOut={...soldOut,...m.data};renderMenu();}}catch(e){}});
+    es.onerror=()=>{};
+  }else{pollSold();setInterval(pollSold,60000);}
+}catch(e){pollSold();}
+document.getElementById('yr').textContent=new Date().getFullYear();
 // 語言切換
 function setLang(lang,btn){
   document.body.className=lang==='zh'?'':lang;
