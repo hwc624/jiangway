@@ -824,7 +824,18 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
     <span class="lang-en">Taiwanese Home Cooking · Johannesburg</span>
     <span class="lang-zu">Ukudla KwaseTaiwan · eGoli</span>
   </p>
+  <p class="f-visits" id="visits" style="opacity:.75;font-size:.85em;margin-top:6px;display:none">
+    <span class="lang-zh">累計瀏覽</span><span class="lang-en">Total visits</span><span class="lang-zu">Ukuvakashelwa</span>
+    <b id="visitsN">0</b>
+  </p>
 </footer>
+<script data-goatcounter="https://jiangwaycatering.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+fetch('https://jiangwaycatering.goatcounter.com/counter/TOTAL.json')
+  .then(r=>r.ok?r.json():null)
+  .then(d=>{if(!d)return;document.getElementById('visitsN').textContent=d.count;document.getElementById('visits').style.display='';})
+  .catch(()=>{});
+</script>
 
 <script>
 
