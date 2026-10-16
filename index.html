@@ -416,6 +416,27 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
 .menu-item.out .mi-price{text-decoration:line-through}
 .mi-badge{display:inline-block;margin-left:8px;background:#6b6159;color:#fff;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1px;padding:2px 8px;border-radius:2px;vertical-align:middle}
 @media(max-width:900px){.menu-list{grid-template-columns:1fr}.mi-thumb{flex-basis:72px;width:72px;height:72px;font-size:28px}.mi-cn{font-size:17px}}
+
+/* ============ 服務項目 ============ */
+.services{background:linear-gradient(180deg,var(--paper-warm) 0%,var(--paper) 100%)}
+.svc-intro{max-width:640px;color:var(--ink-soft);font-size:16.5px;font-weight:300;line-height:2;margin-bottom:56px}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.svc-card{background:var(--cream);border:1px solid rgba(176,141,87,0.22);padding:34px 26px 30px;transition:all .5s cubic-bezier(.16,1,.3,1)}
+.svc-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 20px 40px rgba(26,20,17,0.12)}
+.svc-card .ic{font-size:32px;display:block;margin-bottom:16px}
+.svc-card h3{font-size:20px;font-weight:600;color:var(--ink);letter-spacing:1px;margin-bottom:10px;line-height:1.4}
+.svc-card p{font-size:14.5px;color:var(--ink-soft);font-weight:300;line-height:1.85}
+.svc-steps-title{font-size:22px;font-weight:600;color:var(--ink);letter-spacing:2px;margin:72px 0 26px}
+.svc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;border-top:1px solid rgba(176,141,87,0.35)}
+.svc-steps li{padding:24px 18px 0 0}
+.svc-steps .n{font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:var(--cinnabar);line-height:1}
+.svc-steps .t{font-size:17px;font-weight:500;color:var(--ink);margin:8px 0 4px}
+.svc-steps .d{font-size:13.5px;color:var(--ink-soft);font-weight:300;line-height:1.8}
+.svc-cta{margin-top:56px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.svc-cta p{font-size:14px;color:var(--ink-soft);font-weight:300}
+.svc-cta a.link{color:var(--cinnabar)}
+@media(max-width:900px){.svc-grid{grid-template-columns:1fr 1fr;gap:16px}.svc-steps{grid-template-columns:1fr 1fr;row-gap:10px}}
+@media(max-width:560px){.svc-grid{grid-template-columns:1fr}.svc-steps{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,.hero-tag,.hero h1,.hero-sub,.hero-desc,.hero-cta{opacity:1!important;transform:none!important}}
 </style>
 </head>
@@ -433,6 +454,7 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
     <a href="#dishes"><span class="lang-zh">菜色</span><span class="lang-en">Dishes</span><span class="lang-zu">Izidlo</span></a>
     <a href="#menu"><span class="lang-zh">菜單</span><span class="lang-en">Menu</span><span class="lang-zu">Imenyu</span></a>
     <a href="#bakery"><span class="lang-zh">烘焙</span><span class="lang-en">Bakery</span><span class="lang-zu">Ibhekari</span></a>
+    <a href="#services"><span class="lang-zh">服務項目</span><span class="lang-en">Services</span><span class="lang-zu">Izinsizakalo</span></a>
     <a href="#vouchers"><span class="lang-zh">餐券</span><span class="lang-en">Vouchers</span><span class="lang-zu">Amavawutsha</span></a>
     <a href="#contact"><span class="lang-zh">聯絡</span><span class="lang-en">Contact</span><span class="lang-zu">Thintana</span></a>
     <div class="lang-switch">
@@ -658,6 +680,34 @@ footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
           <p>Perfect Pairings</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 服務項目：外燴與餐會 -->
+<section class="services sec-pad" id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label"><span class="lang-zh">服務項目</span><span class="lang-en">Services</span><span class="lang-zu">Izinsizakalo</span></div>
+      <h2 class="sec-title"><span class="lang-zh">外燴與<em>餐會</em></span><span class="lang-en">Catering &amp; <em>Events</em></span><span class="lang-zu">Ukudla <em>Kwemicimbi</em></span></h2>
+      <p class="svc-intro"><span class="lang-zh">不論是公司行號的會議午餐，還是親友間的歡聚時光，江味齋都能為你準備道地的台灣家常料理。從菜色規劃到準時送達，讓每一場聚會都吃得安心、吃得盡興。</span><span class="lang-en">Whether it&#39;s a working lunch for your company or a celebration with family and friends, JiangWay can prepare authentic Taiwanese home cooking for the occasion — from menu planning to on-time delivery.</span><span class="lang-zu">Kungaba ngumhlangano wenkampani noma umbuthano womndeni, i-JiangWay ingakulungiselela ukudla kwaseTaiwan.</span></p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal"><span class="ic" aria-hidden="true">🏢</span><h3><span class="lang-zh">公司行號餐會・會議便當</span><span class="lang-en">Corporate Lunches &amp; Meeting Bento</span><span class="lang-zu">Ukudla Kwezinkampani</span></h3><p><span class="lang-zh">員工午餐、會議、教育訓練都適合。大量便當統一準備、分裝清楚，讓你專心開會，吃飯的事交給我們。</span><span class="lang-en">Staff lunches, meetings and training days. Bento boxes prepared in bulk and clearly packed, so your team can focus on work while we take care of the food.</span><span class="lang-zu">Ukudla kwasemini kwabasebenzi nemihlangano — sikulungiselela ama-bento amaningi.</span></p></div>
+      <div class="svc-card reveal"><span class="ic" aria-hidden="true">🎉</span><h3><span class="lang-zh">宴會與派對外燴</span><span class="lang-en">Parties &amp; Private Catering</span><span class="lang-zu">Amaphathi Nemibuthano</span></h3><p><span class="lang-zh">生日派對、家庭聚會、親友聚餐，把台灣家常菜端上你的餐桌，賓主盡歡。</span><span class="lang-en">Birthdays, family gatherings and get-togethers — bring Taiwanese home cooking to your table and enjoy the occasion with your guests.</span><span class="lang-zu">Amaphathi osuku lokuzalwa nemibuthano yomndeni — ukudla kwasekhaya kwaseTaiwan etafuleni lakho.</span></p></div>
+      <div class="svc-card reveal"><span class="ic" aria-hidden="true">🏮</span><h3><span class="lang-zh">節慶與活動</span><span class="lang-en">Festivals &amp; Events</span><span class="lang-zu">Imikhosi Nemicimbi</span></h3><p><span class="lang-zh">農曆新年、中秋節、社團或學校活動，用道地台灣味為活動增添節慶氣氛。</span><span class="lang-en">Lunar New Year, Mid-Autumn Festival, community or school events — add a festive touch with authentic Taiwanese flavours.</span><span class="lang-zu">UNyaka Omusha WaseShayina nemicimbi yomphakathi — engeza ukunambitha kweTaiwan.</span></p></div>
+      <div class="svc-card reveal"><span class="ic" aria-hidden="true">📝</span><h3><span class="lang-zh">客製化菜單</span><span class="lang-en">Custom Menus</span><span class="lang-zu">Imenyu Eyenzelwe Wena</span></h3><p><span class="lang-zh">依照場合、人數與預算規劃菜色，也可以安排素食或特殊飲食需求，歡迎和我們討論。</span><span class="lang-en">Menus planned around your occasion, guest count and budget, including vegetarian or other dietary needs. Just talk to us.</span><span class="lang-zu">Imenyu ehlelwe ngokwesikhathi, inani labantu nesabelomali — kuhlanganise nokudla kwemifino.</span></p></div>
+    </div>
+    <h3 class="svc-steps-title reveal"><span class="lang-zh">合作流程</span><span class="lang-en">How It Works</span><span class="lang-zu">Kusebenza Kanjani</span></h3>
+    <ol class="svc-steps reveal">
+      <li><div class="n">01</div><div class="t"><span class="lang-zh">聯絡我們</span><span class="lang-en">Contact Us</span><span class="lang-zu">Xhumana Nathi</span></div><div class="d"><span class="lang-zh">透過 WhatsApp 告訴我們活動日期、地點和需求。</span><span class="lang-en">Tell us the date, location and what you need via WhatsApp.</span><span class="lang-zu">Sitshele usuku nendawo nge-WhatsApp.</span></div></li>
+      <li><div class="n">02</div><div class="t"><span class="lang-zh">討論人數與預算</span><span class="lang-en">Guests &amp; Budget</span><span class="lang-zu">Inani Nesabelomali</span></div><div class="d"><span class="lang-zh">一起確認用餐人數、預算和用餐形式。</span><span class="lang-en">We go over guest numbers, budget and serving style together.</span><span class="lang-zu">Sixoxa ngenani labantu nesabelomali.</span></div></li>
+      <li><div class="n">03</div><div class="t"><span class="lang-zh">確認菜單</span><span class="lang-en">Confirm the Menu</span><span class="lang-zu">Qinisekisa Imenyu</span></div><div class="d"><span class="lang-zh">依需求建議菜色，確認後開始準備。</span><span class="lang-en">We suggest dishes to suit you, then start preparing once confirmed.</span><span class="lang-zu">Siphakamisa izidlo, bese siqala ukulungiselela.</span></div></li>
+      <li><div class="n">04</div><div class="t"><span class="lang-zh">準時送達</span><span class="lang-en">On-time Delivery</span><span class="lang-zu">Ukulethwa Ngesikhathi</span></div><div class="d"><span class="lang-zh">依約定時間把餐點送到現場。</span><span class="lang-en">We deliver your food at the agreed time.</span><span class="lang-zu">Siletha ukudla ngesikhathi esivumelene ngaso.</span></div></li>
+    </ol>
+    <div class="svc-cta reveal">
+      <a href="https://wa.me/27791325590?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E8%A9%A2%E5%95%8F%E6%B1%9F%E5%91%B3%E9%BD%8B%E7%9A%84%E5%A4%96%E7%87%B4%EF%BC%8F%E9%A4%90%E6%9C%83%E6%9C%8D%E5%8B%99%E3%80%82Hi%2C%20I%27d%20like%20to%20ask%20about%20JiangWay%20catering.%0A%E6%B4%BB%E5%8B%95%E6%97%A5%E6%9C%9F%20Date%EF%BC%9A%0A%E4%BA%BA%E6%95%B8%20Guests%EF%BC%9A%0A%E5%9C%B0%E9%BB%9E%20Location%EF%BC%9A" class="btn btn-primary" target="_blank" rel="noopener"><span class="lang-zh">WhatsApp 詢問外燴 →</span><span class="lang-en">Ask About Catering on WhatsApp →</span><span class="lang-zu">Buza nge-WhatsApp →</span></a>
+      <p><span class="lang-zh">請提前聯繫以便安排。企業送禮也可參考<a class="link" href="#vouchers">企業餐券方案</a>。</span><span class="lang-en">Please contact us in advance so we can plan ahead. For corporate gifts, see our <a class="link" href="#vouchers">corporate vouchers</a>.</span><span class="lang-zu">Sicela usithinte kusenesikhathi. Bona futhi <a class="link" href="#vouchers">amavawutsha</a>.</span></p>
     </div>
   </div>
 </section>
