@@ -1,0 +1,54 @@
+/* 江味齋 JiangWay 官網 · 夜市霓虹 B · design tokens v1
+   與點餐系統 /jiangway-order-review/design/b/tokens.css 同一套 --jw-* 命名與色值（超集合）。 */
+:root{
+  color-scheme:dark;
+  /* ── 色彩（與點餐系統相同） ── */
+  --jw-bg-page:#16171B;  --jw-bg-card:#212228;  --jw-bg-raised:#2A2B32; --jw-bg-tile:#2B1A1C;
+  --jw-text-main:#F5F1EA; --jw-text-muted:#B4ADA3; --jw-text-faint:#8E887F;
+  --jw-accent-main:#FF4A3D; --jw-accent-ink:#16171B; --jw-accent-soft:#3A1E1E; --jw-accent-light:#FF8A80;
+  --jw-amber-main:#FFB547;  --jw-amber-ink:#16171B;  --jw-amber-soft:#3A2E1A;
+  --jw-success-main:#6FD6A0; --jw-success-soft:#1C3329;
+  --jw-error-main:#FF8A80;  --jw-error-soft:#3A1E1E;
+  --jw-line-main:#34353D;   --jw-line-strong:#75767F;
+  --jw-wa-main:#25D366;     --jw-wa-ink:#0B1F12;
+  /* ── 色彩（官網專用） ── */
+  --jw-bg-nav:rgba(22,23,27,.9);
+  --jw-bg-section-alt:#1B1B21;          /* 招牌菜漸層終點 */
+  --jw-bg-bakery:#1D1A14;  --jw-amber-light:#FFD27A;   /* 陽光烘焙區 */
+  --jw-bg-market:#22140F;  --jw-text-market:#FFD9A0;   /* 市集條 */
+  --jw-badge-bg:#3A2C12;   --jw-badge-ink:#FFB547;
+  --jw-tag-bg:rgba(0,0,0,.72); --jw-tag-ink:#FFFFFF;    /* 照片「實拍／AI 示意」角標 */
+  /* ── 光暈／陰影（每個視窗區塊最多 1 個主發光元素） ── */
+  --jw-glow-accent:0 0 14px rgba(255,74,61,.55);
+  --jw-glow-amber:0 0 22px rgba(255,181,71,.35);
+  --jw-glow-text:0 0 6px rgba(255,74,61,.8),0 0 18px rgba(255,74,61,.45);
+  --jw-glow-hero-title:0 0 18px rgba(255,74,61,.55),0 0 2px #FF8A80;
+  --jw-glow-hero-sub:0 0 12px rgba(255,181,71,.5);
+  --jw-glow-btn:0 0 0 1px #FF4A3D,0 0 22px rgba(255,74,61,.5);
+  --jw-glow-photo:0 0 30px rgba(255,74,61,.35);
+  --jw-glow-card-hot:0 0 24px rgba(255,74,61,.35);
+  --jw-glow-market:0 0 16px rgba(255,181,71,.25);
+  --jw-glow-wa:0 0 22px rgba(37,211,102,.55);
+  --jw-shadow-raised:0 8px 24px rgba(0,0,0,.45);
+  --jw-focus-ring:0 0 0 3px rgba(255,181,71,.9);
+  /* ── 字型（全部 SIL OFL 1.1 或系統字） ── */
+  --jw-font-display:"Noto Sans TC","Noto Sans CJK TC",system-ui,sans-serif; /* 只載 900 子集 */
+  --jw-font-body:system-ui,-apple-system,"PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",sans-serif;
+  --jw-font-num:system-ui,sans-serif;
+  /* 字級 */
+  --jw-fs-xs:12px; --jw-fs-sm:13px; --jw-fs-14:14px; --jw-fs-md:15px; --jw-fs-16:16px; --jw-fs-lg:17px;
+  --jw-fs-xl:20px; --jw-fs-2xl:24px; --jw-fs-3xl:28px; --jw-fs-num:44px;
+  --jw-fs-h2:clamp(30px,7vw,48px); --jw-fs-hero:clamp(56px,16vw,120px);
+  --jw-lh-body:1.7;
+  /* 間距 4px 級距 */
+  --jw-sp-1:4px; --jw-sp-2:8px; --jw-sp-3:12px; --jw-sp-4:16px; --jw-sp-5:20px; --jw-sp-6:24px;
+  --jw-sp-7:28px; --jw-sp-8:32px; --jw-sp-10:40px; --jw-sp-12:48px; --jw-sp-14:56px; --jw-sp-22:88px;
+  /* 圓角 */
+  --jw-r-xs:4px; --jw-r-sm:6px; --jw-r-logo:10px; --jw-r-md:12px; --jw-r-card:14px; --jw-r-lg:16px; --jw-r-pill:999px;
+  /* 尺寸 */
+  --jw-tap:44px; --jw-tap-lg:52px; --jw-fab:60px; --jw-bp-desktop:960px;
+  --jw-safe-b:env(safe-area-inset-bottom,0px);
+  /* 動態 */
+  --jw-ease:cubic-bezier(.2,.7,.2,1); --jw-dur-fast:120ms; --jw-dur-base:200ms; --jw-dur-reveal:400ms;
+}
+@media (prefers-reduced-motion:reduce){:root{--jw-dur-fast:0ms;--jw-dur-base:0ms;--jw-dur-reveal:0ms}}

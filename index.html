@@ -2,833 +2,87 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>江味齋 JiangWay｜台灣家常料理</title>
+<meta name="theme-color" content="#16171B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@900&amp;display=swap&amp;text=%26%2C-ABCEFGHIJKLMNOPSTUVWYabcdefghijklmnoprstuvwyz%E3%83%BB%E4%B8%80%E4%B9%8B%E4%BB%8A%E4%BD%9C%E4%BE%BF%E5%85%89%E5%85%AC%E5%8A%A0%E5%8B%95%E5%8C%96%E5%8F%A3%E5%8F%B8%E5%90%88%E5%91%B3%E5%96%AE%E5%A4%96%E5%A5%BD%E5%AE%A2%E5%AE%B4%E5%AE%B6%E5%B0%8D%E6%84%81%E6%85%B0%E6%85%B6%E6%8E%92%E6%8E%A7%E6%93%87%E6%97%A5%E6%9C%83%E6%A4%92%E6%AD%A1%E6%B1%9F%E6%B2%B9%E6%B4%BB%E6%B4%BE%E6%B5%81%E7%83%98%E7%84%99%E7%87%B4%E7%95%B6%E7%9A%84%E7%A6%AE%E7%A8%8B%E7%AF%80%E7%B4%A0%E8%82%89%E8%87%A8%E8%88%87%E8%8F%9C%E8%90%AC%E8%92%9E%E8%94%A5%E8%99%9F%E8%9B%8B%E8%A1%8C%E8%A3%BD%E8%AD%B0%E8%BF%8E%E9%80%81%E9%81%B8%E9%84%89%E9%87%8C%E9%99%BD%E9%9B%9E%E9%A3%9F%E9%A3%AF%E9%A4%85%E9%A4%90%E9%AA%A8%E9%BA%BB%E9%BD%8B%EF%BC%8C">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
 <style>
-:root{
-  --ink:#1a1411;
-  --ink-soft:#3a302a;
-  --cinnabar:#9e2b25;
-  --cinnabar-deep:#7a1f1a;
-  --gold:#b08d57;
-  --gold-light:#cdab78;
-  --paper:#f4ece0;
-  --paper-warm:#ede2d2;
-  --cream:#faf6ef;
-  --jade:#5a7361;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Noto Serif TC',serif;
-  background:var(--cream);
-  color:var(--ink);
-  line-height:1.8;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-
-/* 語言切換 */
-.lang-en,.lang-zu{display:none}
-body.en .lang-zh{display:none}
-body.en .lang-en{display:revert}
-body.zu .lang-zh{display:none}
-body.zu .lang-zu{display:revert}
-span.lang-en,span.lang-zu{display:none}
-body.en span.lang-en{display:inline}
-body.en span.lang-zh{display:none}
-body.zu span.lang-zu{display:inline}
-body.zu span.lang-zh{display:none}
-
-/* 紙張紋理背景 */
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(176,141,87,0.04) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(158,43,37,0.03) 0%, transparent 40%);
-  pointer-events:none;z-index:0;
-}
-
-/* 導覽列 */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:22px 48px;
-  background:rgba(250,246,239,0);
-  transition:all .5s cubic-bezier(.16,1,.3,1);
-  mix-blend-mode:normal;
-}
-nav.scrolled{
-  background:rgba(250,246,239,0.92);
-  backdrop-filter:blur(12px);
-  padding:14px 48px;
-  border-bottom:1px solid rgba(176,141,87,0.18);
-}
-.nav-logo{
-  display:flex;align-items:center;gap:12px;
-  font-size:24px;font-weight:600;letter-spacing:3px;
-  color:var(--paper);transition:color .5s;
-}
-nav.scrolled .nav-logo{color:var(--ink)}
-.nav-seal{
-  width:38px;height:38px;
-  background:var(--cinnabar);
-  color:var(--paper);
-  display:flex;align-items:center;justify-content:center;
-  font-size:19px;font-weight:700;
-  border-radius:4px;
-  box-shadow:0 2px 8px rgba(158,43,37,0.3);
-}
-.nav-links{display:flex;align-items:center;gap:34px}
-.nav-links a{
-  color:var(--paper);text-decoration:none;
-  font-size:14px;letter-spacing:1.5px;font-weight:400;
-  position:relative;transition:color .4s;
-  font-family:'Inter',sans-serif;
-}
-nav.scrolled .nav-links a{color:var(--ink-soft)}
-.nav-links a::after{
-  content:'';position:absolute;bottom:-5px;left:0;
-  width:0;height:1px;background:var(--gold);transition:width .4s;
-}
-.nav-links a:hover::after{width:100%}
-.nav-links a:hover{color:var(--gold)}
-.lang-switch{display:flex;gap:2px;margin-left:8px}
-.lang-switch button{
-  background:transparent;border:1px solid rgba(244,236,224,0.4);
-  color:var(--paper);padding:5px 11px;cursor:pointer;
-  font-size:11px;letter-spacing:1px;font-family:'Inter',sans-serif;
-  transition:all .3s;border-radius:2px;
-}
-nav.scrolled .lang-switch button{border-color:rgba(176,141,87,0.4);color:var(--ink-soft)}
-.lang-switch button.active{background:var(--cinnabar);color:var(--paper);border-color:var(--cinnabar)}
-.nav-toggle{display:none}
-
-/* ============ HERO ============ */
-.hero{
-  position:relative;min-height:100vh;
-  display:flex;align-items:center;
-  background:linear-gradient(160deg,#1a1411 0%,#2a201a 55%,#3d2a20 100%);
-  overflow:hidden;
-}
-.hero::before{
-  content:'味';
-  position:absolute;right:-4%;top:50%;transform:translateY(-50%);
-  font-size:48vw;font-weight:900;line-height:1;
-  color:rgba(176,141,87,0.05);
-  pointer-events:none;user-select:none;
-  font-family:'Noto Serif TC',serif;
-}
-.hero-glow{
-  position:absolute;width:600px;height:600px;
-  background:radial-gradient(circle,rgba(158,43,37,0.22) 0%,transparent 70%);
-  top:-10%;left:-8%;border-radius:50%;
-  animation:float 14s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
-.hero-inner{
-  position:relative;z-index:2;
-  max-width:1200px;margin:0 auto;padding:0 48px;
-  width:100%;
-}
-.hero-tag{
-  display:inline-flex;align-items:center;gap:14px;
-  color:var(--gold-light);font-size:13px;letter-spacing:5px;
-  font-family:'Inter',sans-serif;font-weight:400;
-  margin-bottom:30px;text-transform:uppercase;
-  opacity:0;animation:rise 1s cubic-bezier(.16,1,.3,1) .3s forwards;
-}
-.hero-tag::before{content:'';width:46px;height:1px;background:var(--gold)}
-.hero h1{
-  font-size:clamp(56px,9vw,128px);
-  font-weight:700;line-height:.96;color:var(--paper);
-  letter-spacing:6px;margin-bottom:8px;
-  opacity:0;animation:rise 1.1s cubic-bezier(.16,1,.3,1) .5s forwards;
-}
-.hero h1 .accent{color:var(--cinnabar);
-  -webkit-text-stroke:1px var(--gold-light);}
-.hero-sub{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(22px,3vw,34px);font-style:italic;font-weight:400;
-  color:var(--gold-light);letter-spacing:2px;margin-bottom:36px;
-  opacity:0;animation:rise 1.1s cubic-bezier(.16,1,.3,1) .7s forwards;
-}
-.hero-desc{
-  max-width:480px;color:rgba(244,236,224,0.78);
-  font-size:17px;font-weight:300;line-height:2;margin-bottom:46px;
-  opacity:0;animation:rise 1.1s cubic-bezier(.16,1,.3,1) .9s forwards;
-}
-.hero-cta{
-  display:flex;gap:18px;flex-wrap:wrap;
-  opacity:0;animation:rise 1.1s cubic-bezier(.16,1,.3,1) 1.1s forwards;
-}
-@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:translateY(0)}}
-.btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:16px 34px;font-size:14px;letter-spacing:2px;
-  font-family:'Inter',sans-serif;font-weight:500;
-  text-decoration:none;cursor:pointer;border:none;
-  transition:all .4s cubic-bezier(.16,1,.3,1);
-}
-.btn-primary{background:var(--cinnabar);color:var(--paper);
-  box-shadow:0 6px 24px rgba(158,43,37,0.35);}
-.btn-primary:hover{background:var(--cinnabar-deep);transform:translateY(-3px);
-  box-shadow:0 10px 32px rgba(158,43,37,0.45);}
-.btn-ghost{background:transparent;color:var(--paper);
-  border:1px solid rgba(205,171,120,0.5);}
-.btn-ghost:hover{border-color:var(--gold);background:rgba(176,141,87,0.12);transform:translateY(-3px)}
-.hero-scroll{
-  position:absolute;bottom:38px;left:50%;transform:translateX(-50%);
-  color:rgba(244,236,224,0.5);font-size:11px;letter-spacing:3px;
-  font-family:'Inter',sans-serif;z-index:2;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-}
-.hero-scroll::after{content:'';width:1px;height:42px;
-  background:linear-gradient(var(--gold),transparent);
-  animation:scrolldown 2s ease-in-out infinite;}
-@keyframes scrolldown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.1%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-
-/* ============ 區段共用 ============ */
-section{position:relative;z-index:1;scroll-margin-top:60px}
-.wrap{max-width:1200px;margin:0 auto;padding:0 48px}
-.sec-pad{padding:130px 0}
-.sec-label{
-  font-family:'Inter',sans-serif;font-size:12px;letter-spacing:5px;
-  text-transform:uppercase;color:var(--gold);
-  display:flex;align-items:center;gap:14px;margin-bottom:22px;
-}
-.sec-label::before{content:'';width:34px;height:1px;background:var(--gold)}
-.sec-title{
-  font-size:clamp(38px,5.5vw,68px);font-weight:700;
-  line-height:1.08;letter-spacing:3px;color:var(--ink);
-  margin-bottom:30px;
-}
-.sec-title em{font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-weight:500;color:var(--cinnabar);}
-
-/* 進場動畫 */
-.reveal{opacity:0;transform:translateY(46px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);}
-.reveal.in{opacity:1;transform:translateY(0)}
-
-/* ============ 關於 ============ */
-.about{background:var(--cream)}
-.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
-.about-text p{font-size:17px;font-weight:300;color:var(--ink-soft);
-  line-height:2.1;margin-bottom:22px;}
-.about-text .drop{font-size:19px;color:var(--ink);font-weight:400}
-.about-stats{display:flex;gap:0;margin-top:44px;border-top:1px solid rgba(176,141,87,0.3)}
-.about-stat{flex:1;padding:28px 0;border-right:1px solid rgba(176,141,87,0.3)}
-.about-stat:last-child{border-right:none}
-.about-stat .num{font-size:44px;font-weight:700;color:var(--cinnabar);
-  line-height:1;font-family:'Cormorant Garamond',serif;}
-.about-stat .lbl{font-size:13px;color:var(--ink-soft);letter-spacing:1px;margin-top:8px;
-  font-family:'Inter',sans-serif;}
-.about-visual{position:relative;aspect-ratio:3/4;}
-.about-seal{
-  position:absolute;inset:0;
-  background:linear-gradient(145deg,var(--cinnabar) 0%,var(--cinnabar-deep) 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border:2px solid var(--gold);
-  box-shadow:0 30px 60px rgba(26,20,17,0.3);
-}
-.about-seal .big{font-size:140px;font-weight:900;color:var(--paper);
-  line-height:.9;letter-spacing:8px;text-shadow:0 4px 20px rgba(0,0,0,0.3);}
-.about-seal .small{font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:22px;color:var(--gold-light);letter-spacing:4px;margin-top:18px;}
-.about-corner{position:absolute;width:34px;height:34px;border:2px solid var(--gold)}
-.about-corner.tl{top:14px;left:14px;border-right:none;border-bottom:none}
-.about-corner.br{bottom:14px;right:14px;border-left:none;border-top:none}
-
-/* ============ 招牌菜 ============ */
-.dishes{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-warm) 100%)}
-.dishes-head{display:flex;justify-content:space-between;align-items:flex-end;
-  margin-bottom:64px;flex-wrap:wrap;gap:24px}
-.dishes-head .sec-title{margin-bottom:0}
-.dishes-head p{max-width:340px;color:var(--ink-soft);font-size:16px;font-weight:300}
-.dish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.dish{
-  background:var(--cream);position:relative;overflow:hidden;
-  border:1px solid rgba(176,141,87,0.2);
-  transition:all .5s cubic-bezier(.16,1,.3,1);cursor:default;
-}
-.dish:hover{transform:translateY(-8px);
-  box-shadow:0 24px 50px rgba(26,20,17,0.14);border-color:var(--gold);}
-.dish-num{position:absolute;top:20px;right:24px;
-  font-family:'Cormorant Garamond',serif;font-size:46px;font-style:italic;
-  color:rgba(176,141,87,0.25);line-height:1;}
-.dish-body{padding:38px 32px 34px}
-.dish-cn{font-size:27px;font-weight:600;color:var(--ink);letter-spacing:2px;margin-bottom:6px}
-.dish-en{font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:17px;color:var(--gold);margin-bottom:18px;}
-.dish-desc{font-size:14.5px;color:var(--ink-soft);font-weight:300;line-height:1.85}
-.dish-line{width:40px;height:2px;background:var(--cinnabar);margin-top:22px;
-  transition:width .5s;}
-.dish:hover .dish-line{width:80px}
-
-/* ============ 烘焙 ============ */
-.bakery{background:var(--ink);color:var(--paper);overflow:hidden;position:relative}
-.bakery::before{content:'烘';position:absolute;left:-2%;bottom:-8%;
-  font-size:32vw;font-weight:900;color:rgba(176,141,87,0.04);line-height:1;}
-.bakery-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:center;position:relative;z-index:1}
-.bakery .sec-label{color:var(--gold-light)}
-.bakery .sec-title{color:var(--paper)}
-.bakery-pill{display:inline-block;background:var(--cinnabar);color:var(--paper);
-  font-family:'Inter',sans-serif;font-size:12px;letter-spacing:2px;padding:7px 16px;
-  border-radius:2px;margin-bottom:26px;}
-.bakery-text p{color:rgba(244,236,224,0.76);font-size:16.5px;font-weight:300;line-height:2}
-.bakery-items{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.bk-item{background:rgba(244,236,224,0.04);border:1px solid rgba(176,141,87,0.18);
-  padding:32px 28px;transition:all .45s;}
-.bk-item:hover{background:rgba(176,141,87,0.1);border-color:var(--gold);transform:translateY(-4px)}
-.bk-item .ic{font-size:34px;margin-bottom:16px;display:block}
-.bk-item h4{font-size:20px;font-weight:500;color:var(--paper);letter-spacing:1px;margin-bottom:6px}
-.bk-item p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;
-  color:var(--gold-light);}
-
-/* ============ 餐券 ============ */
-.vouchers{background:var(--cream);text-align:center}
-.vouchers .sec-label{justify-content:center}
-.vouchers .sec-label::before{display:none}
-.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:64px}
-.v-card{
-  position:relative;padding:50px 36px 44px;
-  background:var(--paper);border:1px solid rgba(176,141,87,0.25);
-  transition:all .5s cubic-bezier(.16,1,.3,1);
-}
-.v-card.featured{background:linear-gradient(165deg,var(--ink) 0%,#2a201a 100%);
-  border:2px solid var(--gold);transform:scale(1.04);}
-.v-card:hover{transform:translateY(-8px)}
-.v-card.featured:hover{transform:scale(1.04) translateY(-8px)}
-.v-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
-  background:var(--cinnabar);color:var(--paper);font-family:'Inter',sans-serif;
-  font-size:11px;letter-spacing:2px;padding:6px 18px;}
-.v-name{font-size:22px;font-weight:600;letter-spacing:2px;margin-bottom:6px;color:var(--ink)}
-.v-card.featured .v-name{color:var(--paper)}
-.v-tier{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;
-  color:var(--gold);margin-bottom:24px}
-.v-price{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:600;
-  color:var(--cinnabar);line-height:1;margin-bottom:6px}
-.v-card.featured .v-price{color:var(--gold-light)}
-.v-price small{font-size:24px;vertical-align:super}
-.v-save{font-size:13px;color:var(--jade);font-family:'Inter',sans-serif;
-  letter-spacing:1px;margin-bottom:24px}
-.v-desc{font-size:14px;color:var(--ink-soft);font-weight:300;line-height:1.8;
-  min-height:50px}
-.v-card.featured .v-desc{color:rgba(244,236,224,0.7)}
-.v-cta-wrap{margin-top:56px}
-
-/* ============ 聯絡 ============ */
-.contact{background:linear-gradient(160deg,#1a1411 0%,#2a201a 100%);color:var(--paper);
-  position:relative;overflow:hidden}
-.contact::before{content:'齋';position:absolute;right:-3%;top:-12%;
-  font-size:40vw;font-weight:900;color:rgba(158,43,37,0.05);line-height:1;}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:54px;position:relative;z-index:1}
-.contact .sec-title{color:var(--paper)}
-.contact .sec-label{color:var(--gold-light)}
-.c-block h4{font-size:15px;letter-spacing:3px;color:var(--gold);margin-bottom:20px;
-  font-family:'Inter',sans-serif;font-weight:500;text-transform:uppercase;}
-.c-block p{color:rgba(244,236,224,0.8);font-size:16px;font-weight:300;margin-bottom:6px}
-.c-block strong{color:var(--paper);font-weight:500}
-.c-links{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-.c-links a{display:inline-flex;align-items:center;gap:7px;
-  padding:11px 20px;border:1px solid rgba(205,171,120,0.4);
-  color:var(--paper);text-decoration:none;font-size:13px;letter-spacing:1px;
-  font-family:'Inter',sans-serif;transition:all .4s;}
-.c-links a:hover{background:var(--cinnabar);border-color:var(--cinnabar);transform:translateY(-2px)}
-
-/* ============ Footer ============ */
-footer{background:#120d0a;color:rgba(244,236,224,0.6);
-  padding:48px 0;text-align:center;border-top:1px solid rgba(176,141,87,0.18)}
-footer .f-logo{display:flex;align-items:center;justify-content:center;gap:12px;
-  font-size:22px;font-weight:600;letter-spacing:4px;color:var(--paper);margin-bottom:14px}
-footer .f-seal{width:34px;height:34px;background:var(--cinnabar);color:var(--paper);
-  display:flex;align-items:center;justify-content:center;font-weight:700;border-radius:3px}
-footer p{font-size:13px;letter-spacing:1px;font-family:'Inter',sans-serif}
-footer .f-line{width:60px;height:1px;background:var(--gold);margin:20px auto}
-
-/* ============ 響應式 ============ */
-@media(max-width:900px){
-  nav{padding:18px 24px}
-  nav.scrolled{padding:12px 24px}
-  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:74%;
-    flex-direction:column;justify-content:center;gap:30px;
-    background:rgba(26,20,17,0.97);backdrop-filter:blur(16px);
-    transition:right .5s cubic-bezier(.16,1,.3,1);padding:40px;}
-  .nav-links.open{right:0}
-  .nav-links a{color:var(--paper) !important;font-size:18px}
-  .lang-switch{margin-left:0;margin-top:10px}
-  .lang-switch button{color:var(--paper) !important;border-color:rgba(205,171,120,0.4) !important}
-  .nav-toggle{display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:1100;background:none;border:none}
-  .nav-toggle span{width:26px;height:2px;background:var(--paper);transition:all .4s}
-  nav.scrolled .nav-toggle span{background:var(--ink)}
-  .nav-toggle.open span{background:var(--paper)}
-  .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .nav-toggle.open span:nth-child(2){opacity:0}
-  .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  .wrap{padding:0 24px}
-  .sec-pad{padding:80px 0}
-  .hero-inner{padding:0 24px}
-  .about-grid{grid-template-columns:1fr;gap:50px}
-  .about-visual{max-width:380px;margin:0 auto;width:100%}
-  .dish-grid{grid-template-columns:1fr;gap:20px}
-  .dishes-head{flex-direction:column;align-items:flex-start}
-  .bakery-grid{grid-template-columns:1fr;gap:44px}
-  .bakery-items{grid-template-columns:1fr 1fr}
-  .v-grid{grid-template-columns:1fr;gap:40px}
-  .v-card.featured{transform:scale(1)}
-  .v-card.featured:hover{transform:translateY(-8px)}
-  .contact-grid{grid-template-columns:1fr;gap:44px}
-  .about-stat .num{font-size:34px}
-}
-@media(max-width:480px){
-  .about-stats{flex-direction:column}
-  .about-stat{border-right:none;border-bottom:1px solid rgba(176,141,87,0.3);padding:20px 0}
-  .about-stat:last-child{border-bottom:none}
-  .bakery-items{grid-template-columns:1fr}
-}
-
-/* ============ 完整菜單 ============ */
-.menu{background:var(--cream)}
-.menu .sec-title{margin-bottom:18px}
-.menu-note{color:var(--ink-soft);font-size:15px;font-weight:300;margin-bottom:36px}
-.menu-tabs{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;margin-bottom:34px;padding-bottom:6px;-webkit-overflow-scrolling:touch}
-.menu-tabs button{flex:0 0 auto;background:transparent;border:1px solid rgba(176,141,87,0.45);color:var(--ink-soft);
-  padding:10px 18px;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:1px;cursor:pointer;border-radius:2px;transition:all .3s}
-.menu-tabs button[aria-selected="true"]{background:var(--cinnabar);border-color:var(--cinnabar);color:var(--paper)}
-.menu-cat-note{font-size:13px;color:var(--jade);font-family:'Inter',sans-serif;margin-bottom:16px}
-.menu-list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px;list-style:none}
-.menu-item{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px dashed rgba(176,141,87,0.35)}
-.mi-thumb{flex:0 0 84px;width:84px;height:84px;border-radius:6px;overflow:hidden;background:var(--paper-warm);border:1px solid rgba(176,141,87,0.25);display:flex;align-items:center;justify-content:center;font-size:34px}
-.mi-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.mi-thumb{position:relative}
-.mi-illus{position:absolute;left:0;right:0;bottom:0;background:rgba(26,20,17,0.62);color:#fff;font-family:'Inter',sans-serif;font-size:9px;letter-spacing:.5px;text-align:center;padding:1px 0;line-height:1.5}
-.mi-text{flex:1;min-width:0}
-.menu-item.out .mi-thumb{filter:grayscale(1);opacity:.55}
-.mi-cn{font-size:18px;font-weight:500;color:var(--ink);letter-spacing:1px}
-.mi-en{font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);font-weight:300}
-.mi-price{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--cinnabar);white-space:nowrap}
-.menu-item.out .mi-cn,.menu-item.out .mi-en,.menu-item.out .mi-price{color:#9a8f86}
-.menu-item.out .mi-price{text-decoration:line-through}
-.mi-badge{display:inline-block;margin-left:8px;background:#6b6159;color:#fff;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1px;padding:2px 8px;border-radius:2px;vertical-align:middle}
-@media(max-width:900px){.menu-list{grid-template-columns:1fr}.mi-thumb{flex-basis:72px;width:72px;height:72px;font-size:28px}.mi-cn{font-size:17px}}
-
-/* ============ 服務項目 ============ */
-.services{background:linear-gradient(180deg,var(--paper-warm) 0%,var(--paper) 100%)}
-.svc-intro{max-width:640px;color:var(--ink-soft);font-size:16.5px;font-weight:300;line-height:2;margin-bottom:56px}
-.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.svc-card{background:var(--cream);border:1px solid rgba(176,141,87,0.22);padding:34px 26px 30px;transition:all .5s cubic-bezier(.16,1,.3,1)}
-.svc-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 20px 40px rgba(26,20,17,0.12)}
-.svc-card .ic{font-size:32px;display:block;margin-bottom:16px}
-.svc-card h3{font-size:20px;font-weight:600;color:var(--ink);letter-spacing:1px;margin-bottom:10px;line-height:1.4}
-.svc-card p{font-size:14.5px;color:var(--ink-soft);font-weight:300;line-height:1.85}
-.svc-steps-title{font-size:22px;font-weight:600;color:var(--ink);letter-spacing:2px;margin:72px 0 26px}
-.svc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;border-top:1px solid rgba(176,141,87,0.35)}
-.svc-steps li{padding:24px 18px 0 0}
-.svc-steps .n{font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:var(--cinnabar);line-height:1}
-.svc-steps .t{font-size:17px;font-weight:500;color:var(--ink);margin:8px 0 4px}
-.svc-steps .d{font-size:13.5px;color:var(--ink-soft);font-weight:300;line-height:1.8}
-.svc-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;list-style:none}
-.svc-facts li{display:flex;align-items:center;gap:12px;padding:16px 18px;background:var(--cream);border-left:3px solid var(--cinnabar);font-size:15px;color:var(--ink)}
-.svc-facts .ic{font-size:22px}
-@media(max-width:900px){.svc-facts{grid-template-columns:1fr}}
-.svc-cta{margin-top:56px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
-.svc-cta p{font-size:14px;color:var(--ink-soft);font-weight:300}
-.svc-cta a.link{color:var(--cinnabar)}
-@media(max-width:900px){.svc-grid{grid-template-columns:1fr 1fr;gap:16px}.svc-steps{grid-template-columns:1fr 1fr;row-gap:10px}}
-@media(max-width:560px){.svc-grid{grid-template-columns:1fr}.svc-steps{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,.hero-tag,.hero h1,.hero-sub,.hero-desc,.hero-cta{opacity:1!important;transform:none!important}}
+/* 官網專用補充（v5 稿沒有的舊站內容：漢堡選單、5 道招牌菜、服務卡、菜單英文名） */
+.jw-nav__toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card);background:transparent;cursor:pointer}
+.jw-nav__toggle span{width:20px;height:2px;background:var(--jw-text-main);transition:transform var(--jw-dur-base),opacity var(--jw-dur-base)}
+.jw-nav__toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}.jw-nav__toggle.open span:nth-child(2){opacity:0}.jw-nav__toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.jw-nav__links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;padding:8px 16px 16px;background:rgba(22,23,27,.97);border-bottom:1px solid var(--jw-line-main)}
+.jw-nav__links.open a{min-height:48px;font-size:var(--jw-fs-lg);border-bottom:1px solid var(--jw-line-main)}
+.jw-dish__en{font-size:var(--jw-fs-sm)!important;color:var(--jw-amber-main)!important;margin:2px 0 6px}
+.jw-mi .jw-fig{position:relative}.jw-mi__emoji{font-size:44px;line-height:1}
+.jw-mi__en{display:block;font-size:var(--jw-fs-sm);color:var(--jw-text-muted);line-height:1.4;margin:2px 0 4px}
+.jw-menu__note{margin:0 0 var(--jw-sp-3);font-size:var(--jw-fs-14);color:var(--jw-text-muted)}
+.jw-chip__ic{font-size:26px;line-height:1}.jw-chips small{display:block;font-weight:400;font-size:var(--jw-fs-sm);color:var(--jw-text-muted)}
+.jw-svc__g{display:grid;gap:var(--jw-sp-3);margin-bottom:var(--jw-sp-10)}
+.jw-svc{padding:var(--jw-sp-5);background:var(--jw-bg-card);border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card)}
+.jw-svc__ic{font-size:28px;display:block;margin-bottom:8px}.jw-svc h3{font:800 18px/1.4 var(--jw-font-display);margin-bottom:6px}.jw-svc p{font-size:var(--jw-fs-md);color:var(--jw-text-muted)}
+.jw-h3{font:900 22px var(--jw-font-display);margin-bottom:var(--jw-sp-4)}
+.jw-catnote{max-width:640px;margin:var(--jw-sp-4) auto 0}
+.jw-link{color:var(--jw-amber-main);text-decoration:underline!important;text-underline-offset:3px}
+.jw-v__tier{display:block;font-size:var(--jw-fs-sm);color:var(--jw-amber-main)}
+.jw-foot__logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--jw-text-main)}.jw-foot__logo .jw-logo__mark{width:32px;height:32px;font-size:18px}
+@media(min-width:600px){.jw-svc__g{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.jw-nav__toggle{display:none}.jw-dishes__g--5{grid-template-columns:repeat(5,1fr)}.jw-svc__g{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
-<body>
-
-<!-- 導覽列 -->
-<nav id="nav">
-  <a href="#hero" class="nav-logo" style="text-decoration:none">
-    <span class="nav-seal">江</span>
-    <span>江味齋</span>
-  </a>
-  <button class="nav-toggle" id="navToggle" aria-label="選單"><span></span><span></span><span></span></button>
-  <div class="nav-links" id="navLinks">
-    <a href="#about"><span class="lang-zh">關於</span><span class="lang-en">About</span><span class="lang-zu">Ngathi</span></a>
-    <a href="#dishes"><span class="lang-zh">菜色</span><span class="lang-en">Dishes</span><span class="lang-zu">Izidlo</span></a>
-    <a href="#menu"><span class="lang-zh">菜單</span><span class="lang-en">Menu</span><span class="lang-zu">Imenyu</span></a>
-    <a href="#bakery"><span class="lang-zh">烘焙</span><span class="lang-en">Bakery</span><span class="lang-zu">Ibhekari</span></a>
-    <a href="#services"><span class="lang-zh">服務項目</span><span class="lang-en">Services</span><span class="lang-zu">Izinsizakalo</span></a>
-    <a href="#vouchers"><span class="lang-zh">餐券</span><span class="lang-en">Vouchers</span><span class="lang-zu">Amavawutsha</span></a>
-    <a href="#contact"><span class="lang-zh">聯絡</span><span class="lang-en">Contact</span><span class="lang-zu">Thintana</span></a>
-    <div class="lang-switch">
-      <button onclick="setLang('zh',this)" class="active">中</button>
-      <button onclick="setLang('en',this)">EN</button>
-      <button onclick="setLang('zu',this)">ZU</button>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-inner">
-    <div class="hero-tag">
-      <span class="lang-zh">台灣家常料理</span>
-      <span class="lang-en">Authentic Taiwanese Kitchen</span>
-      <span class="lang-zu">Ikhishi LaseTaiwan</span>
-    </div>
-    <h1>江<span class="accent">味</span>齋</h1>
-    <div class="hero-sub">JiangWay</div>
-    <p class="hero-desc">
-      <span class="lang-zh">將台灣街頭巷尾的家鄉滋味，帶到約翰尼斯堡。每一道菜，都是一段關於記憶與溫度的故事。</span>
-      <span class="lang-en">Bringing the soul of Taiwan's street kitchens to Johannesburg. Every dish is a story of memory and warmth.</span>
-      <span class="lang-zu">Siletha umoya wamakhishi aseTaiwan eJohannesburg. Isidlo ngasinye yindaba yenkumbulo nokufudumala.</span>
-    </p>
-    <div class="hero-cta">
-      <a href="#dishes" class="btn btn-ghost">
-        <span class="lang-zh">瀏覽菜色</span>
-        <span class="lang-en">Explore Menu</span>
-        <span class="lang-zu">Buka Idina</span>
-      </a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <span class="lang-zh">向下探索</span>
-    <span class="lang-en">SCROLL</span>
-    <span class="lang-zu">SHELELA</span>
-  </div>
-</section>
-
-<!-- 關於 -->
-<section class="about sec-pad" id="about">
-  <div class="wrap">
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <div class="sec-label">
-          <span class="lang-zh">關於江味齋</span>
-          <span class="lang-en">Our Story</span>
-          <span class="lang-zu">Indaba Yethu</span>
-        </div>
-        <h2 class="sec-title">
-          <span class="lang-zh">一口家鄉味，<br><em>萬里慰鄉愁</em></span>
-          <span class="lang-en">A Taste of Home,<br><em>Across Oceans</em></span>
-          <span class="lang-zu">Ukunambitha Kwasekhaya,<br><em>Ngaphesheya</em></span>
-        </h2>
-        <div class="lang-zh">
-          <p class="drop">江味齋自 2025 年於 Edenburg 開業，秉持「用心做菜、講究食材」的信念，將台灣家傳的料理手藝，原汁原味呈現在南非的餐桌上。</p>
-          <p>從酥香排骨、滷得入味的控肉，到一碗熱騰騰的肉羹麵，我們相信，真正的好味道，來自於對細節的執著與對家鄉的思念。無論內用、外帶、外送，江味齋都希望成為你在異鄉最熟悉的那盞燈火。</p>
-        </div>
-        <div class="lang-en">
-          <p class="drop">Founded in 2025 in Edenburg, JiangWay is built on a simple belief — cook with heart, source with care — bringing the genuine flavours of Taiwanese home cooking to South African tables.</p>
-          <p>From crispy pork chops to slow-braised pork belly and a steaming bowl of pork thick soup noodles, we believe great taste comes from devotion to detail and longing for home. Dine in, take away, or have it delivered — JiangWay hopes to be your most familiar light away from home.</p>
-        </div>
-        <div class="lang-zu">
-          <p class="drop">Yasungulwa ngo-2025 e-Edenburg, i-JiangWay yakhelwe enkolelweni elula — pheka ngenhliziyo — iletha ukunambitha kweqiniso kokupheka kwasekhaya kwaseTaiwan.</p>
-          <p>Kusukela ezinkomeni ezikhwabanisiwe kuya esobho lengulube, sikholelwa ukuthi ukunambitha okuhle kuvela ekuzinikeleni. Yidlela ngaphakathi, uyithathe, noma ilethwe — i-JiangWay ifuna ukuba ngukukhanya kwakho okujwayelekile.</p>
-        </div>
-        <div class="about-stats">
-          <div class="about-stat">
-            <div class="num">2025</div>
-            <div class="lbl"><span class="lang-zh">創立</span><span class="lang-en">Founded</span><span class="lang-zu">Kwasungulwa</span></div>
-          </div>
-          <div class="about-stat">
-            <div class="num">20+</div>
-            <div class="lbl"><span class="lang-zh">招牌菜色</span><span class="lang-en">Signature Dishes</span><span class="lang-zu">Izidlo</span></div>
-          </div>
-          <div class="about-stat">
-            <div class="num">100%</div>
-            <div class="lbl"><span class="lang-zh">用心現做</span><span class="lang-en">Made Fresh</span><span class="lang-zu">Kwenziwe Kusha</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="about-visual reveal">
-        <div class="about-seal">
-          <div class="big">味</div>
-          <div class="small">JiangWay · est. 2025</div>
-        </div>
-        <div class="about-corner tl"></div>
-        <div class="about-corner br"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 招牌菜 -->
-<section class="dishes sec-pad" id="dishes">
-  <div class="wrap">
-    <div class="dishes-head reveal">
-      <div>
-        <div class="sec-label">
-          <span class="lang-zh">招牌菜色</span>
-          <span class="lang-en">Signature Menu</span>
-          <span class="lang-zu">Imenyu</span>
-        </div>
-        <h2 class="sec-title">
-          <span class="lang-zh">味之<em>選</em></span>
-          <span class="lang-en">The <em>Selection</em></span>
-          <span class="lang-zu">Ukhetho</span>
-        </h2>
-      </div>
-      <p>
-        <span class="lang-zh">每一道都是江味齋的心血之作，用最真誠的手藝，重現台灣的經典滋味。</span>
-        <span class="lang-en">Each dish is crafted with sincerity, recreating the timeless flavours of Taiwan.</span>
-        <span class="lang-zu">Isidlo ngasinye senziwe ngobuqotho, sakha kabusha ukunambitha kweTaiwan.</span>
-      </p>
-    </div>
-    <div class="dish-grid">
-      <div class="dish reveal">
-        <div class="dish-num">01</div>
-        <div class="dish-body">
-          <div class="dish-cn"><span class="lang-zh">排骨飯</span><span class="lang-en">Pork Chop</span><span class="lang-zu">Inyama Yengulube</span></div>
-          <div class="dish-en">Crispy Pork Chop Bento</div>
-          <div class="dish-desc"><span class="lang-zh">酥脆多汁的招牌炸排骨，搭配白飯與三樣家常小菜。</span><span class="lang-en">Crispy, juicy signature pork chop served with rice and three homestyle sides.</span><span class="lang-zu">Inyama ekhanyayo enobumnandi, ihanjiswa nelayisi.</span></div>
-          <div class="dish-line"></div>
-        </div>
-      </div>
-      <div class="dish reveal">
-        <div class="dish-num">02</div>
-        <div class="dish-body">
-          <div class="dish-cn"><span class="lang-zh">控肉飯</span><span class="lang-en">Braised Pork</span><span class="lang-zu">Ingulube Ebilisiwe</span></div>
-          <div class="dish-en">Braised Pork Belly Bento</div>
-          <div class="dish-desc"><span class="lang-zh">慢火滷製、入口即化的五花控肉，是最道地的台灣味。</span><span class="lang-en">Slow-braised, melt-in-your-mouth pork belly — the most authentic Taiwanese taste.</span><span class="lang-zu">Ibilisiwe kancane, incibilika emlonyeni.</span></div>
-          <div class="dish-line"></div>
-        </div>
-      </div>
-      <div class="dish reveal">
-        <div class="dish-num">03</div>
-        <div class="dish-body">
-          <div class="dish-cn"><span class="lang-zh">椒麻雞飯</span><span class="lang-en">Pepper Chicken</span><span class="lang-zu">Inkukhu Epepile</span></div>
-          <div class="dish-en">TW Pepper Chicken Bento</div>
-          <div class="dish-desc"><span class="lang-zh">嫩滑炸雞淋上特製椒麻醬，麻香微辣、層次豐富。</span><span class="lang-en">Tender fried chicken in our signature peppercorn sauce — fragrant and gently spicy.</span><span class="lang-zu">Inkukhu ethambile enesoso ekhethekile, enuka kamnandi.</span></div>
-          <div class="dish-line"></div>
-        </div>
-      </div>
-      <div class="dish reveal">
-        <div class="dish-num">04</div>
-        <div class="dish-body">
-          <div class="dish-cn"><span class="lang-zh">蔥油餅加蛋</span><span class="lang-en">Scallion Crepe</span><span class="lang-zu">I-Scallion Crepe</span></div>
-          <div class="dish-en">Scallion Egg Crepe</div>
-          <div class="dish-desc"><span class="lang-zh">外酥內Q的手工蔥油餅，包入金黃煎蛋，香氣四溢。</span><span class="lang-en">Handmade scallion crepe — crispy outside, chewy inside, wrapped around a golden egg.</span><span class="lang-zu">I-crepe eyenziwe ngesandla, ekhanyayo ngaphandle.</span></div>
-          <div class="dish-line"></div>
-        </div>
-      </div>
-      <div class="dish reveal">
-        <div class="dish-num">05</div>
-        <div class="dish-body">
-          <div class="dish-cn"><span class="lang-zh">素食飯</span><span class="lang-en">Vegetarian</span><span class="lang-zu">Okwemifino</span></div>
-          <div class="dish-en">Vegetarian Bento</div>
-          <div class="dish-desc"><span class="lang-zh">嚴選時令蔬食與豆製品，清爽健康也能滿足味蕾。</span><span class="lang-en">Seasonal vegetables and tofu — light, healthy, and deeply satisfying.</span><span class="lang-zu">Imifino yesizini ne-tofu — ekhululekile futhi enempilo.</span></div>
-          <div class="dish-line"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+<body class="jw-site">
+<header class="jw-nav" id="nav"><a class="jw-logo" href="#hero"><span class="jw-logo__mark">江</span><span class="jw-logo__t">江味齋<small>JiangWay</small></span></a>
+<nav class="jw-nav__links" id="navLinks" aria-label="主選單 Main"><a href="#about"><span class="lang-zh">關於</span><span class="lang-en" lang="en">About</span><span class="lang-zu" lang="zu">Ngathi</span></a><a href="#dishes"><span class="lang-zh">菜色</span><span class="lang-en" lang="en">Dishes</span><span class="lang-zu" lang="zu">Izidlo</span></a><a href="#menu"><span class="lang-zh">菜單</span><span class="lang-en" lang="en">Menu</span><span class="lang-zu" lang="zu">Imenyu</span></a><a href="#bakery"><span class="lang-zh">烘焙</span><span class="lang-en" lang="en">Bakery</span><span class="lang-zu" lang="zu">Ibhekari</span></a><a href="#services"><span class="lang-zh">服務項目</span><span class="lang-en" lang="en">Services</span><span class="lang-zu" lang="zu">Izinsizakalo</span></a><a href="#vouchers"><span class="lang-zh">餐券</span><span class="lang-en" lang="en">Vouchers</span><span class="lang-zu" lang="zu">Amavawutsha</span></a><a href="#contact"><span class="lang-zh">聯絡</span><span class="lang-en" lang="en">Contact</span><span class="lang-zu" lang="zu">Thintana</span></a></nav>
+<div class="jw-lang" role="group" aria-label="語言 Language"><button type="button" data-lang="zh" lang="zh-Hant" aria-pressed="true">中</button><button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button><button type="button" data-lang="zu" lang="zu" aria-pressed="false">Zulu</button></div>
+<!-- 待 Hans 確認：點餐系統正式網址（候選 https://hwc624.github.io/jiangway-order-system/） -->
+<a class="jw-btn jw-btn--order jw-nav__order" href="#order-app-placeholder"><svg class="jw-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="lang-zh">線上點餐</span><span class="lang-en" lang="en">Order Online</span><span class="lang-zu" lang="zu">Oda Ku-inthanethi</span></a>
+<button class="jw-nav__toggle" id="navToggle" type="button" aria-label="選單 Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button></header>
+<main>
+<section id="hero" class="jw-hero"><div class="jw-hero__txt"><p class="jw-eyebrow"><span class="lang-zh">台灣家常料理</span><span class="lang-en" lang="en">Authentic Taiwanese Kitchen</span><span class="lang-zu" lang="zu">Ikhishi LaseTaiwan</span></p><h1>江味齋<em>JiangWay</em></h1>
+<p class="jw-lead"><span class="lang-zh">將台灣街頭巷尾的家鄉滋味，帶到約翰尼斯堡。每一道菜，都是一段關於記憶與溫度的故事。</span><span class="lang-en" lang="en">Bringing the soul of Taiwan's street kitchens to Johannesburg. Every dish is a story of memory and warmth.</span><span class="lang-zu" lang="zu">Siletha umoya wamakhishi aseTaiwan eJohannesburg. Isidlo ngasinye yindaba yenkumbulo nokufudumala.</span></p>
+<div class="jw-cta"><a class="jw-btn jw-btn--order jw-btn--lg" href="#order-app-placeholder"><svg class="jw-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="lang-zh">線上點餐</span><span class="lang-en" lang="en">Order Online</span><span class="lang-zu" lang="zu">Oda Ku-inthanethi</span></a><a class="jw-btn jw-btn--ghost jw-btn--lg" href="#dishes"><span class="lang-zh">瀏覽菜色</span><span class="lang-en" lang="en">Explore Menu</span><span class="lang-zu" lang="zu">Buka Idina</span><svg class="jw-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+<div class="jw-hours"><svg class="jw-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b><span class="lang-zh">營業時間</span><span class="lang-en" lang="en">Hours</span><span class="lang-zu" lang="zu">Amahora</span></b><span><strong><span class="lang-zh">週一至週六</span><span class="lang-en" lang="en">Mon – Sat</span><span class="lang-zu" lang="zu">Msombuluko – Mgqibelo</span></strong>　10:30 – 19:00</span><span><strong><span class="lang-zh">週日</span><span class="lang-en" lang="en">Sunday</span><span class="lang-zu" lang="zu">ISonto</span></strong>　<span class="lang-zh">公休</span><span class="lang-en" lang="en">Closed</span><span class="lang-zu" lang="zu">Kuvaliwe</span></span></div></div></div>
+<figure class="jw-fig jw-hero__img"><img src="images/b5.webp" alt="控肉飯 Braised Pork Belly Bento" width="800" height="800" loading="eager" fetchpriority="high"><span class="jw-tag jw-tag--real"><span class="lang-zh">實拍</span><span class="lang-en" lang="en">Real photo</span><span class="lang-zu" lang="zu">Isithombe sangempela</span></span></figure></section>
+<section id="about" class="jw-about jw-sec"><div class="jw-sec__h jw-reveal"><p class="jw-eyebrow"><span class="lang-zh">關於江味齋</span><span class="lang-en" lang="en">Our Story</span><span class="lang-zu" lang="zu">Indaba Yethu</span></p><h2><span class="lang-zh">一口家鄉味，萬里慰鄉愁</span><span class="lang-en" lang="en">A Taste of Home, Across Oceans</span><span class="lang-zu" lang="zu">Ukunambitha Kwasekhaya, Ngaphesheya</span></h2></div>
+<div class="jw-about__g"><div class="jw-reveal"><p><span class="lang-zh">江味齋自 2025 年於 Edenburg 開業，秉持「用心做菜、講究食材」的信念，將台灣家傳的料理手藝，原汁原味呈現在南非的餐桌上。</span><span class="lang-en" lang="en">Founded in 2025 in Edenburg, JiangWay is built on a simple belief — cook with heart, source with care — bringing the genuine flavours of Taiwanese home cooking to South African tables.</span><span class="lang-zu" lang="zu">Yasungulwa ngo-2025 e-Edenburg, i-JiangWay yakhelwe enkolelweni elula — pheka ngenhliziyo — iletha ukunambitha kweqiniso kokupheka kwasekhaya kwaseTaiwan.</span></p><p><span class="lang-zh">從酥香排骨、滷得入味的控肉，到一碗熱騰騰的肉羹麵，我們相信，真正的好味道，來自於對細節的執著與對家鄉的思念。無論內用、外帶、外送，江味齋都希望成為你在異鄉最熟悉的那盞燈火。</span><span class="lang-en" lang="en">From crispy pork chops to slow-braised pork belly and a steaming bowl of pork thick soup noodles, we believe great taste comes from devotion to detail and longing for home. Dine in, take away, or have it delivered — JiangWay hopes to be your most familiar light away from home.</span><span class="lang-zu" lang="zu">Kusukela ezinkomeni ezikhwabanisiwe kuya esobho lengulube, sikholelwa ukuthi ukunambitha okuhle kuvela ekuzinikeleni. Yidlela ngaphakathi, uyithathe, noma ilethwe — i-JiangWay ifuna ukuba ngukukhanya kwakho okujwayelekile.</span></p>
+<ul class="jw-stats"><li><b>2025</b><span class="lang-zh">創立</span><span class="lang-en" lang="en">Founded</span><span class="lang-zu" lang="zu">Kwasungulwa</span></li><li><b>20+</b><span class="lang-zh">招牌菜色</span><span class="lang-en" lang="en">Signature Dishes</span><span class="lang-zu" lang="zu">Izidlo</span></li><li><b>100%</b><span class="lang-zh">用心現做</span><span class="lang-en" lang="en">Made Fresh</span><span class="lang-zu" lang="zu">Kwenziwe Kusha</span></li></ul></div>
+<figure class="jw-fig jw-about__img jw-reveal"><img src="images/a7.webp" alt="鹽酥雞 Popcorn Chicken" width="800" height="800" loading="lazy" decoding="async"><span class="jw-tag jw-tag--real"><span class="lang-zh">實拍</span><span class="lang-en" lang="en">Real photo</span><span class="lang-zu" lang="zu">Isithombe sangempela</span></span></figure></div></section>
+<section id="dishes" class="jw-sec jw-dishes"><div class="jw-sec__h jw-reveal"><p class="jw-eyebrow"><span class="lang-zh">招牌菜色</span><span class="lang-en" lang="en">Signature Menu</span><span class="lang-zu" lang="zu">Imenyu</span></p><h2><span class="lang-zh">味之選</span><span class="lang-en" lang="en">The Selection</span><span class="lang-zu" lang="zu">Ukhetho</span></h2><p class="jw-sub"><span class="lang-zh">每一道都是江味齋的心血之作，用最真誠的手藝，重現台灣的經典滋味。</span><span class="lang-en" lang="en">Each dish is crafted with sincerity, recreating the timeless flavours of Taiwan.</span><span class="lang-zu" lang="zu">Isidlo ngasinye senziwe ngobuqotho, sakha kabusha ukunambitha kweTaiwan.</span></p></div><div class="jw-dishes__g jw-dishes__g--5"><article class="jw-dish jw-reveal"><figure class="jw-fig"><img src="images/b1.webp" alt="排骨飯 Crispy Pork Chop Bento" width="800" height="800" loading="lazy" decoding="async"><span class="jw-tag jw-tag--real"><span class="lang-zh">實拍</span><span class="lang-en" lang="en">Real photo</span><span class="lang-zu" lang="zu">Isithombe sangempela</span></span></figure><div class="jw-dish__b"><h3><span class="lang-zh">排骨飯</span><span class="lang-en" lang="en">Pork Chop</span><span class="lang-zu" lang="zu">Inyama Yengulube</span></h3><p class="jw-dish__en" lang="en">Crispy Pork Chop Bento</p><p><span class="lang-zh">酥脆多汁的招牌炸排骨，搭配白飯與三樣家常小菜。</span><span class="lang-en" lang="en">Crispy, juicy signature pork chop served with rice and three homestyle sides.</span><span class="lang-zu" lang="zu">Inyama ekhanyayo enobumnandi, ihanjiswa nelayisi.</span></p></div></article><article class="jw-dish jw-reveal"><figure class="jw-fig"><img src="images/b5.webp" alt="控肉飯 Braised Pork Belly Bento" width="800" height="800" loading="lazy" decoding="async"><span class="jw-tag jw-tag--real"><span class="lang-zh">實拍</span><span class="lang-en" lang="en">Real photo</span><span class="lang-zu" lang="zu">Isithombe sangempela</span></span></figure><div class="jw-dish__b"><h3><span class="lang-zh">控肉飯</span><span class="lang-en" lang="en">Braised Pork</span><span class="lang-zu" lang="zu">Ingulube Ebilisiwe</span></h3><p class="jw-dish__en" lang="en">Braised Pork Belly Bento</p><p><span class="lang-zh">慢火滷製、入口即化的五花控肉，是最道地的台灣味。</span><span class="lang-en" lang="en">Slow-braised, melt-in-your-mouth pork belly — the most authentic Taiwanese taste.</span><span class="lang-zu" lang="zu">Ibilisiwe kancane, incibilika emlonyeni.</span></p></div></article><article class="jw-dish jw-reveal"><figure class="jw-fig"><img src="images/b4.webp" alt="椒麻雞飯 TW Pepper Chicken Bento" width="800" height="800" loading="lazy" decoding="async"><span class="jw-tag jw-tag--real"><span class="lang-zh">實拍</span><span class="lang-en" lang="en">Real photo</span><span class="lang-zu" lang="zu">Isithombe sangempela</span></span></figure><div class="jw-dish__b"><h3><span class="lang-zh">椒麻雞飯</span><span class="lang-en" lang="en">Pepper Chicken</span><span class="lang-zu" lang="zu">Inkukhu Epepile</span></h3><p class="jw-dish__en" lang="en">TW Pepper Chicken Bento</p><p><span class="lang-zh">嫩滑炸雞淋上特製椒麻醬，麻香微辣、層次豐富。</span><span class="lang-en" lang="en">Tender fried chicken in our signature peppercorn sauce — fragrant and gently spicy.</span><span class="lang-zu" lang="zu">Inkukhu ethambile enesoso ekhethekile, enuka kamnandi.</span></p></div></article><article class="jw-dish jw-reveal"><figure class="jw-fig"><img src="images/a1.webp" alt="蔥油餅加蛋 Scallion Egg Crepe" width="800" height="800" loading="lazy" decoding="async"><span class="jw-tag jw-tag--ai"><span class="lang-zh">AI 示意</span><span class="lang-en" lang="en">AI illustration</span><span class="lang-zu" lang="zu">Umfanekiso we-AI</span></span></figure><div class="jw-dish__b"><h3><span class="lang-zh">蔥油餅加蛋</span><span class="lang-en" lang="en">Scallion Crepe</span><span class="lang-zu" lang="zu">I-Scallion Crepe</span></h3><p class="jw-dish__en" lang="en">Scallion Egg Crepe</p><p><span class="lang-zh">外酥內Q的手工蔥油餅，包入金黃煎蛋，香氣四溢。</span><span class="lang-en" lang="en">Handmade scallion crepe — crispy outside, chewy inside, wrapped around a golden egg.</span><span class="lang-zu" lang="zu">I-crepe eyenziwe ngesandla, ekhanyayo ngaphandle.</span></p></div></article><article class="jw-dish jw-reveal"><figure class="jw-fig"><img src="images/b8.webp" alt="素食飯 Vegetarian Bento" width="800" height="800" loading="lazy" decoding="async"><span class="jw-tag jw-tag--ai"><span class="lang-zh">AI 示意</span><span class="lang-en" lang="en">AI illustration</span><span class="lang-zu" lang="zu">Umfanekiso we-AI</span></span></figure><div class="jw-dish__b"><h3><span class="lang-zh">素食飯</span><span class="lang-en" lang="en">Vegetarian</span><span class="lang-zu" lang="zu">Okwemifino</span></h3><p class="jw-dish__en" lang="en">Vegetarian Bento</p><p><span class="lang-zh">嚴選時令蔬食與豆製品，清爽健康也能滿足味蕾。</span><span class="lang-en" lang="en">Seasonal vegetables and tofu — light, healthy, and deeply satisfying.</span><span class="lang-zu" lang="zu">Imifino yesizini ne-tofu — ekhululekile futhi enempilo.</span></p></div></article></div></section>
 <!-- 完整菜單（品項、價格、id 與點餐系統 MENU 相同） -->
-<section class="menu sec-pad" id="menu">
-  <div class="wrap">
-    <div class="sec-label"><span class="lang-zh">完整菜單</span><span class="lang-en">Full Menu</span><span class="lang-zu">Imenyu Ephelele</span></div>
-    <h2 class="sec-title"><span class="lang-zh">今日<em>菜單</em></span><span class="lang-en">Our <em>Menu</em></span><span class="lang-zu">Imenyu <em>Yethu</em></span></h2>
-    <p class="menu-note"><span class="lang-zh">價格以南非蘭特 (R) 計，售完狀態即時更新。</span><span class="lang-en">Prices in South African Rand (R). Sold-out status updates live.</span><span class="lang-zu">Amanani ngama-Rand (R). Isimo sokuphela sibuyekezwa ngokushesha.</span></p>
-    <div class="menu-tabs" id="menuTabs" role="tablist"></div>
-    <div id="menuPanel" role="tabpanel"></div>
-  </div>
-</section>
-
-<!-- 烘焙 -->
-<section class="bakery sec-pad" id="bakery">
-  <div class="wrap">
-    <div class="bakery-grid">
-      <div class="bakery-text reveal">
-        <div class="bakery-pill">🌞 Sunning Bakery</div>
-        <div class="sec-label">
-          <span class="lang-zh">姊妹烘焙品牌</span>
-          <span class="lang-en">Sister Bakery</span>
-          <span class="lang-zu">Ibhekari Elingudadewethu</span>
-        </div>
-        <h2 class="sec-title">
-          <span class="lang-zh">陽光<em>烘焙</em></span>
-          <span class="lang-en">Baked in <em>Sunlight</em></span>
-          <span class="lang-zu">Ophekwe <em>Elangeni</em></span>
-        </h2>
-        <div class="bakery-text">
-          <p>
-            <span class="lang-zh">除了道地台菜，江味齋更推出自家烘焙品牌 Sunning Bakery。從手工歐式麵包、訂製蛋糕到精緻甜點，每一件作品都以優質食材與傳統工法，承載著對美味的執著。</span>
-            <span class="lang-en">Beyond authentic Taiwanese cuisine, JiangWay presents Sunning Bakery. From artisan breads and custom cakes to delicate pastries, every creation carries our devotion to flavour, made with premium ingredients and time-honoured methods.</span>
-            <span class="lang-zu">Ngaphandle kokudla kwaseTaiwan, i-JiangWay yethula i-Sunning Bakery. Kusukela ezinkweni eziphekiwe kuya emakhekheni, konke kwenziwe ngothando.</span>
-          </p>
-        </div>
-      </div>
-      <div class="bakery-items reveal">
-        <div class="bk-item">
-          <span class="ic">🥖</span>
-          <h4><span class="lang-zh">手工麵包</span><span class="lang-en">Artisan Bread</span><span class="lang-zu">Isinkwa</span></h4>
-          <p>Freshly Baked Daily</p>
-        </div>
-        <div class="bk-item">
-          <span class="ic">🎂</span>
-          <h4><span class="lang-zh">訂製蛋糕</span><span class="lang-en">Custom Cakes</span><span class="lang-zu">Amakhekhe</span></h4>
-          <p>Made to Order</p>
-        </div>
-        <div class="bk-item">
-          <span class="ic">🧁</span>
-          <h4><span class="lang-zh">精緻甜點</span><span class="lang-en">Fine Pastries</span><span class="lang-zu">Izimnandi</span></h4>
-          <p>Crafted with Care</p>
-        </div>
-        <div class="bk-item">
-          <span class="ic">☕</span>
-          <h4><span class="lang-zh">咖啡飲品</span><span class="lang-en">Coffee &amp; Tea</span><span class="lang-zu">Ikhofi</span></h4>
-          <p>Perfect Pairings</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<section id="menu" class="jw-sec jw-menu"><div class="jw-sec__h jw-reveal"><p class="jw-eyebrow"><span class="lang-zh">完整菜單</span><span class="lang-en" lang="en">Full Menu</span><span class="lang-zu" lang="zu">Imenyu Ephelele</span></p><h2><span class="lang-zh">今日菜單</span><span class="lang-en" lang="en">Our Menu</span><span class="lang-zu" lang="zu">Imenyu Yethu</span></h2><p class="jw-sub"><span class="lang-zh">價格以南非蘭特 (R) 計，售完狀態即時更新。</span><span class="lang-en" lang="en">Prices in South African Rand (R). Sold-out status updates live.</span><span class="lang-zu" lang="zu">Amanani ngama-Rand (R). Isimo sokuphela sibuyekezwa ngokushesha.</span></p></div>
+<div class="jw-tabs" id="menuTabs" role="tablist"></div><div id="menuPanel" role="tabpanel"></div>
+<div class="jw-center"><a class="jw-btn jw-btn--order jw-btn--lg" href="#order-app-placeholder"><svg class="jw-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="lang-zh">線上點餐</span><span class="lang-en" lang="en">Order Online</span><span class="lang-zu" lang="zu">Oda Ku-inthanethi</span></a></div></section>
+<section id="bakery" class="jw-sec jw-bakery"><div class="jw-sec__h jw-reveal"><p class="jw-eyebrow">🌞 Sunning Bakery · <span class="lang-zh">姊妹烘焙品牌</span><span class="lang-en" lang="en">Sister Bakery</span><span class="lang-zu" lang="zu">Ibhekari Elingudadewethu</span></p><h2><span class="lang-zh">陽光烘焙</span><span class="lang-en" lang="en">Baked in Sunlight</span><span class="lang-zu" lang="zu">Ophekwe Elangeni</span></h2><p class="jw-sub"><span class="lang-zh">除了道地台菜，江味齋更推出自家烘焙品牌 Sunning Bakery。從手工歐式麵包、訂製蛋糕到精緻甜點，每一件作品都以優質食材與傳統工法，承載著對美味的執著。</span><span class="lang-en" lang="en">Beyond authentic Taiwanese cuisine, JiangWay presents Sunning Bakery. From artisan breads and custom cakes to delicate pastries, every creation carries our devotion to flavour, made with premium ingredients and time-honoured methods.</span><span class="lang-zu" lang="zu">Ngaphandle kokudla kwaseTaiwan, i-JiangWay yethula i-Sunning Bakery. Kusukela ezinkweni eziphekiwe kuya emakhekheni, konke kwenziwe ngothando.</span></p></div>
+<ul class="jw-chips jw-reveal"><li><span class="jw-chip__ic" aria-hidden="true">🥖</span><div><b><span class="lang-zh">手工麵包</span><span class="lang-en" lang="en">Artisan Bread</span><span class="lang-zu" lang="zu">Isinkwa</span></b><small lang="en">Freshly Baked Daily</small></div></li><li><span class="jw-chip__ic" aria-hidden="true">🎂</span><div><b><span class="lang-zh">訂製蛋糕</span><span class="lang-en" lang="en">Custom Cakes</span><span class="lang-zu" lang="zu">Amakhekhe</span></b><small lang="en">Made to Order</small></div></li><li><span class="jw-chip__ic" aria-hidden="true">🧁</span><div><b><span class="lang-zh">精緻甜點</span><span class="lang-en" lang="en">Fine Pastries</span><span class="lang-zu" lang="zu">Izimnandi</span></b><small lang="en">Crafted with Care</small></div></li><li><span class="jw-chip__ic" aria-hidden="true">☕</span><div><b><span class="lang-zh">咖啡飲品</span><span class="lang-en" lang="en">Coffee &amp; Tea</span><span class="lang-zu" lang="zu">Ikhofi</span></b><small lang="en">Perfect Pairings</small></div></li></ul></section>
 <!-- 服務項目：外燴與餐會 -->
-<section class="services sec-pad" id="services">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label"><span class="lang-zh">服務項目</span><span class="lang-en">Services</span><span class="lang-zu">Izinsizakalo</span></div>
-      <h2 class="sec-title"><span class="lang-zh">外燴與<em>餐會</em></span><span class="lang-en">Catering &amp; <em>Events</em></span><span class="lang-zu">Ukudla <em>Kwemicimbi</em></span></h2>
-      <p class="svc-intro"><span class="lang-zh">不論是公司行號的會議午餐，還是親友間的歡聚時光，江味齋都能為你準備道地的台灣家常料理。從菜色規劃到準時送達，讓每一場聚會都吃得安心、吃得盡興。</span><span class="lang-en">Whether it&#39;s a working lunch for your company or a celebration with family and friends, JiangWay can prepare authentic Taiwanese home cooking for the occasion — from menu planning to on-time delivery.</span><span class="lang-zu">Kungaba ngumhlangano wenkampani noma umbuthano womndeni, i-JiangWay ingakulungiselela ukudla kwaseTaiwan.</span></p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc-card reveal"><span class="ic" aria-hidden="true">🏢</span><h3><span class="lang-zh">公司行號餐會・會議便當</span><span class="lang-en">Corporate Lunches &amp; Meeting Bento</span><span class="lang-zu">Ukudla Kwezinkampani</span></h3><p><span class="lang-zh">員工午餐、會議、教育訓練都適合。大量便當統一準備、分裝清楚，讓你專心開會，吃飯的事交給我們。</span><span class="lang-en">Staff lunches, meetings and training days. Bento boxes prepared in bulk and clearly packed, so your team can focus on work while we take care of the food.</span><span class="lang-zu">Ukudla kwasemini kwabasebenzi nemihlangano — sikulungiselela ama-bento amaningi.</span></p></div>
-      <div class="svc-card reveal"><span class="ic" aria-hidden="true">🎉</span><h3><span class="lang-zh">宴會與派對外燴</span><span class="lang-en">Parties &amp; Private Catering</span><span class="lang-zu">Amaphathi Nemibuthano</span></h3><p><span class="lang-zh">生日派對、家庭聚會、親友聚餐，把台灣家常菜端上你的餐桌，賓主盡歡。</span><span class="lang-en">Birthdays, family gatherings and get-togethers — bring Taiwanese home cooking to your table and enjoy the occasion with your guests.</span><span class="lang-zu">Amaphathi osuku lokuzalwa nemibuthano yomndeni — ukudla kwasekhaya kwaseTaiwan etafuleni lakho.</span></p></div>
-      <div class="svc-card reveal"><span class="ic" aria-hidden="true">🏮</span><h3><span class="lang-zh">節慶與活動</span><span class="lang-en">Festivals &amp; Events</span><span class="lang-zu">Imikhosi Nemicimbi</span></h3><p><span class="lang-zh">農曆新年、中秋節、社團或學校活動，用道地台灣味為活動增添節慶氣氛。</span><span class="lang-en">Lunar New Year, Mid-Autumn Festival, community or school events — add a festive touch with authentic Taiwanese flavours.</span><span class="lang-zu">UNyaka Omusha WaseShayina nemicimbi yomphakathi — engeza ukunambitha kweTaiwan.</span></p></div>
-      <div class="svc-card reveal"><span class="ic" aria-hidden="true">📝</span><h3><span class="lang-zh">客製化菜單</span><span class="lang-en">Custom Menus</span><span class="lang-zu">Imenyu Eyenzelwe Wena</span></h3><p><span class="lang-zh">依照場合、人數與預算規劃菜色，也可以安排素食或特殊飲食需求，歡迎和我們討論。</span><span class="lang-en">Menus planned around your occasion, guest count and budget, including vegetarian or other dietary needs. Just talk to us.</span><span class="lang-zu">Imenyu ehlelwe ngokwesikhathi, inani labantu nesabelomali — kuhlanganise nokudla kwemifino.</span></p></div>
-    </div>
-    <h3 class="svc-steps-title reveal"><span class="lang-zh">合作流程</span><span class="lang-en">How It Works</span><span class="lang-zu">Kusebenza Kanjani</span></h3>
-    <ol class="svc-steps reveal">
-      <li><div class="n">01</div><div class="t"><span class="lang-zh">聯絡我們</span><span class="lang-en">Contact Us</span><span class="lang-zu">Xhumana Nathi</span></div><div class="d"><span class="lang-zh">透過 WhatsApp 告訴我們活動日期、地點和需求。</span><span class="lang-en">Tell us the date, location and what you need via WhatsApp.</span><span class="lang-zu">Sitshele usuku nendawo nge-WhatsApp.</span></div></li>
-      <li><div class="n">02</div><div class="t"><span class="lang-zh">討論人數與預算</span><span class="lang-en">Guests &amp; Budget</span><span class="lang-zu">Inani Nesabelomali</span></div><div class="d"><span class="lang-zh">一起確認用餐人數、預算和用餐形式。</span><span class="lang-en">We go over guest numbers, budget and serving style together.</span><span class="lang-zu">Sixoxa ngenani labantu nesabelomali.</span></div></li>
-      <li><div class="n">03</div><div class="t"><span class="lang-zh">確認菜單</span><span class="lang-en">Confirm the Menu</span><span class="lang-zu">Qinisekisa Imenyu</span></div><div class="d"><span class="lang-zh">依需求建議菜色，確認後開始準備。</span><span class="lang-en">We suggest dishes to suit you, then start preparing once confirmed.</span><span class="lang-zu">Siphakamisa izidlo, bese siqala ukulungiselela.</span></div></li>
-      <li><div class="n">04</div><div class="t"><span class="lang-zh">準時送達</span><span class="lang-en">On-time Delivery</span><span class="lang-zu">Ukulethwa Ngesikhathi</span></div><div class="d"><span class="lang-zh">依約定時間把餐點送到現場。</span><span class="lang-en">We deliver your food at the agreed time.</span><span class="lang-zu">Siletha ukudla ngesikhathi esivumelene ngaso.</span></div></li>
-    </ol>
-    <ul class="svc-facts reveal">
-      <li><span class="ic" aria-hidden="true">📅</span><span class="lang-zh">活動日兩週前預訂</span><span class="lang-en">Book 2 weeks before your event</span><span class="lang-zu">Bhuka emasontweni ama-2 ngaphambili</span></li>
-      <li><span class="ic" aria-hidden="true">🚚</span><span class="lang-zh">外送範圍約 50 公里內</span><span class="lang-en">Delivery within about 50 km</span><span class="lang-zu">Ukulethwa cishe ngaphakathi kuka-50 km</span></li>
-      <li><span class="ic" aria-hidden="true">🧾</span><span class="lang-zh">滿 R10,000 即可外送</span><span class="lang-en">Delivery for orders over R10,000</span><span class="lang-zu">Kulethwa ama-oda angaphezu kuka-R10,000</span></li>
-      <!-- TODO(Hans 提供後補上)：最低人數 min headcount：＿＿ 人 -->
-      <!-- TODO(Hans 提供後補上)：每人價格 price per person：R＿＿ 起 -->
-    </ul>
-    <div class="svc-cta reveal">
-      <a href="https://wa.me/27791325590?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E8%A9%A2%E5%95%8F%E6%B1%9F%E5%91%B3%E9%BD%8B%E7%9A%84%E5%A4%96%E7%87%B4%EF%BC%8F%E9%A4%90%E6%9C%83%E6%9C%8D%E5%8B%99%E3%80%82Hi%2C%20I%27d%20like%20to%20ask%20about%20JiangWay%20catering.%0A%E6%B4%BB%E5%8B%95%E6%97%A5%E6%9C%9F%20Date%EF%BC%9A%0A%E4%BA%BA%E6%95%B8%20Guests%EF%BC%9A%0A%E5%9C%B0%E9%BB%9E%20Location%EF%BC%9A" class="btn btn-primary" target="_blank" rel="noopener"><span class="lang-zh">WhatsApp 詢問外燴 →</span><span class="lang-en">Ask About Catering on WhatsApp →</span><span class="lang-zu">Buza nge-WhatsApp →</span></a>
-      <p><span class="lang-zh">請於活動日兩週前預訂。外送範圍：從 Rivonia 店面約 50 公里內，訂單總金額滿 R10,000 即可外送。企業送禮也可參考<a class="link" href="#vouchers">企業餐券方案</a>。</span><span class="lang-en">Please book at least 2 weeks before your event. Delivery: within about 50 km of our Rivonia kitchen, for orders over R10,000. For corporate gifts, see our <a class="link" href="#vouchers">corporate vouchers</a>.</span><span class="lang-zu">Sicela ubhuke emasontweni ama-2 ngaphambi komcimbi. Ukulethwa: cishe ngaphakathi kuka-50 km ukusuka e-Rivonia, kuma-oda angaphezu kuka-R10,000. Bona futhi <a class="link" href="#vouchers">amavawutsha</a>.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- 餐券 -->
-<section class="vouchers sec-pad" id="vouchers">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="sec-label">
-        <span class="lang-zh">企業餐券方案</span>
-        <span class="lang-en">Corporate Vouchers</span>
-        <span class="lang-zu">Amavawutsha Ezinkampani</span>
-      </div>
-      <h2 class="sec-title">
-        <span class="lang-zh">送禮的<em>好選擇</em></span>
-        <span class="lang-en">The Perfect <em>Gift</em></span>
-        <span class="lang-zu">Isipho <em>Esihle</em></span>
-      </h2>
-    </div>
-    <div class="v-grid">
-      <div class="v-card reveal">
-        <div class="v-name"><span class="lang-zh">單張</span><span class="lang-en">Single</span><span class="lang-zu">Eyodwa</span></div>
-        <div class="v-tier">Individual</div>
-        <div class="v-price"><small>R</small>100</div>
-        <div class="v-save">&nbsp;</div>
-        <div class="v-desc"><span class="lang-zh">可用於內用、外帶或外送，最靈活的選擇。</span><span class="lang-en">Valid for dine-in, takeaway or delivery — the flexible choice.</span><span class="lang-zu">Isebenza kukho konke — ukukhetha okuguquguqukayo.</span></div>
-      </div>
-      <div class="v-card featured reveal">
-        <div class="v-badge"><span class="lang-zh">最受歡迎</span><span class="lang-en">POPULAR</span><span class="lang-zu">EDUMILE</span></div>
-        <div class="v-name"><span class="lang-zh">10 張起</span><span class="lang-en">Bulk · 10+</span><span class="lang-zu">10+</span></div>
-        <div class="v-tier">Team Benefits</div>
-        <div class="v-price"><small>R</small>90</div>
-        <div class="v-save"><span class="lang-zh">每張省 R10 · 10% 折扣</span><span class="lang-en">Save R10 each · 10% off</span><span class="lang-zu">Yonga R10 · 10%</span></div>
-        <div class="v-desc"><span class="lang-zh">適合員工福利、團隊聚餐，省心又貼心。</span><span class="lang-en">Perfect for employee perks and team meals.</span><span class="lang-zu">Ekulungele izinzuzo zabasebenzi.</span></div>
-      </div>
-      <div class="v-card reveal">
-        <div class="v-name"><span class="lang-zh">50 張起</span><span class="lang-en">Large · 50+</span><span class="lang-zu">50+</span></div>
-        <div class="v-tier">Enterprise</div>
-        <div class="v-price"><small>R</small>80</div>
-        <div class="v-save"><span class="lang-zh">每張省 R20 · 20% 折扣</span><span class="lang-en">Save R20 each · 20% off</span><span class="lang-zu">Yonga R20 · 20%</span></div>
-        <div class="v-desc"><span class="lang-zh">大量採購享最優惠，可客製專屬款式。</span><span class="lang-en">Best value in bulk, with custom designs available.</span><span class="lang-zu">Inani elihle kakhulu, nemiklamo yakho.</span></div>
-      </div>
-    </div>
-    <div class="v-cta-wrap reveal">
-      <a href="https://wa.me/27791325590?text=您好，我對江味齋的企業餐券方案有興趣，想了解更多。" class="btn btn-primary" target="_blank" rel="noopener">
-        <span class="lang-zh">洽詢企業方案 →</span>
-        <span class="lang-en">Enquire Now →</span>
-        <span class="lang-zu">Buza Manje →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- 聯絡 -->
-<section class="contact sec-pad" id="contact">
-  <div class="wrap">
-    <div class="reveal" style="margin-bottom:64px">
-      <div class="sec-label">
-        <span class="lang-zh">聯絡我們</span>
-        <span class="lang-en">Get in Touch</span>
-        <span class="lang-zu">Thintana Nathi</span>
-      </div>
-      <h2 class="sec-title">
-        <span class="lang-zh">歡迎<em>蒞臨</em></span>
-        <span class="lang-en">Come <em>Visit Us</em></span>
-        <span class="lang-zu">Woza <em>Usivakashele</em></span>
-      </h2>
-    </div>
-    <div class="contact-grid">
-      <div class="c-block reveal">
-        <h4><span class="lang-zh">地址</span><span class="lang-en">Location</span><span class="lang-zu">Indawo</span></h4>
-        <p><strong>32 Wessel Rd</strong></p>
-        <p>Edenburg, Rivonia</p>
-        <p>Johannesburg, 2191</p>
-        <div class="c-links">
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=32+Wessel+Rd%2C+Edenburg%2C+Rivonia%2C+Johannesburg" target="_blank" rel="noopener">📍 Google Maps</a>
-        </div>
-      </div>
-      <div class="c-block reveal">
-        <h4><span class="lang-zh">營業時間</span><span class="lang-en">Hours</span><span class="lang-zu">Amahora</span></h4>
-        <p><strong><span class="lang-zh">週一至週六</span><span class="lang-en">Mon – Sat</span><span class="lang-zu">Msombuluko – Mgqibelo</span></strong>　10:30 – 19:00</p>
-        <p><strong><span class="lang-zh">週日</span><span class="lang-en">Sunday</span><span class="lang-zu">ISonto</span></strong>　<span class="lang-zh">公休</span><span class="lang-en">Closed</span><span class="lang-zu">Kuvaliwe</span></p>
-      </div>
-      <div class="c-block reveal">
-        <h4><span class="lang-zh">聯繫方式</span><span class="lang-en">Reach Us</span><span class="lang-zu">Sithinte</span></h4>
-        <p><strong>WhatsApp</strong>　+27 79 132 5590</p>
-        <p><strong>Email</strong>　jiangwaycatering@gmail.com</p>
-        <div class="c-links">
-          <a href="https://wa.me/27791325590" target="_blank" rel="noopener">💬 WhatsApp</a>
-          <a href="mailto:jiangwaycatering@gmail.com">✉ Email</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="f-logo"><span class="f-seal">江</span><span>江味齋 JiangWay</span></div>
-  <div class="f-line"></div>
-  <p>© <span id="yr">2026</span> Intelage Trading CC ·
-    <span class="lang-zh">台灣家常料理 · 約翰尼斯堡</span>
-    <span class="lang-en">Taiwanese Home Cooking · Johannesburg</span>
-    <span class="lang-zu">Ukudla KwaseTaiwan · eGoli</span>
-  </p>
-  <p class="f-visits" id="visits" style="opacity:.75;font-size:.85em;margin-top:6px;display:none">
-    <span class="lang-zh">累計瀏覽</span><span class="lang-en">Total visits</span><span class="lang-zu">Ukuvakashelwa</span>
-    <b id="visitsN">0</b>
-  </p>
-</footer>
+<section id="services" class="jw-sec jw-catering"><div class="jw-sec__h jw-reveal"><p class="jw-eyebrow"><span class="lang-zh">服務項目</span><span class="lang-en" lang="en">Services</span><span class="lang-zu" lang="zu">Izinsizakalo</span></p><h2><span class="lang-zh">外燴與餐會</span><span class="lang-en" lang="en">Catering &amp; Events</span><span class="lang-zu" lang="zu">Ukudla Kwemicimbi</span></h2><p class="jw-sub"><span class="lang-zh">不論是公司行號的會議午餐，還是親友間的歡聚時光，江味齋都能為你準備道地的台灣家常料理。從菜色規劃到準時送達，讓每一場聚會都吃得安心、吃得盡興。</span><span class="lang-en" lang="en">Whether it&#39;s a working lunch for your company or a celebration with family and friends, JiangWay can prepare authentic Taiwanese home cooking for the occasion — from menu planning to on-time delivery.</span><span class="lang-zu" lang="zu">Kungaba ngumhlangano wenkampani noma umbuthano womndeni, i-JiangWay ingakulungiselela ukudla kwaseTaiwan.</span></p></div>
+<ul class="jw-svc__g"><li class="jw-svc jw-reveal"><span class="jw-svc__ic" aria-hidden="true">🏢</span><h3><span class="lang-zh">公司行號餐會・會議便當</span><span class="lang-en" lang="en">Corporate Lunches &amp; Meeting Bento</span><span class="lang-zu" lang="zu">Ukudla Kwezinkampani</span></h3><p><span class="lang-zh">員工午餐、會議、教育訓練都適合。大量便當統一準備、分裝清楚，讓你專心開會，吃飯的事交給我們。</span><span class="lang-en" lang="en">Staff lunches, meetings and training days. Bento boxes prepared in bulk and clearly packed, so your team can focus on work while we take care of the food.</span><span class="lang-zu" lang="zu">Ukudla kwasemini kwabasebenzi nemihlangano — sikulungiselela ama-bento amaningi.</span></p></li><li class="jw-svc jw-reveal"><span class="jw-svc__ic" aria-hidden="true">🎉</span><h3><span class="lang-zh">宴會與派對外燴</span><span class="lang-en" lang="en">Parties &amp; Private Catering</span><span class="lang-zu" lang="zu">Amaphathi Nemibuthano</span></h3><p><span class="lang-zh">生日派對、家庭聚會、親友聚餐，把台灣家常菜端上你的餐桌，賓主盡歡。</span><span class="lang-en" lang="en">Birthdays, family gatherings and get-togethers — bring Taiwanese home cooking to your table and enjoy the occasion with your guests.</span><span class="lang-zu" lang="zu">Amaphathi osuku lokuzalwa nemibuthano yomndeni — ukudla kwasekhaya kwaseTaiwan etafuleni lakho.</span></p></li><li class="jw-svc jw-reveal"><span class="jw-svc__ic" aria-hidden="true">🏮</span><h3><span class="lang-zh">節慶與活動</span><span class="lang-en" lang="en">Festivals &amp; Events</span><span class="lang-zu" lang="zu">Imikhosi Nemicimbi</span></h3><p><span class="lang-zh">農曆新年、中秋節、社團或學校活動，用道地台灣味為活動增添節慶氣氛。</span><span class="lang-en" lang="en">Lunar New Year, Mid-Autumn Festival, community or school events — add a festive touch with authentic Taiwanese flavours.</span><span class="lang-zu" lang="zu">UNyaka Omusha WaseShayina nemicimbi yomphakathi — engeza ukunambitha kweTaiwan.</span></p></li><li class="jw-svc jw-reveal"><span class="jw-svc__ic" aria-hidden="true">📝</span><h3><span class="lang-zh">客製化菜單</span><span class="lang-en" lang="en">Custom Menus</span><span class="lang-zu" lang="zu">Imenyu Eyenzelwe Wena</span></h3><p><span class="lang-zh">依照場合、人數與預算規劃菜色，也可以安排素食或特殊飲食需求，歡迎和我們討論。</span><span class="lang-en" lang="en">Menus planned around your occasion, guest count and budget, including vegetarian or other dietary needs. Just talk to us.</span><span class="lang-zu" lang="zu">Imenyu ehlelwe ngokwesikhathi, inani labantu nesabelomali — kuhlanganise nokudla kwemifino.</span></p></li></ul>
+<h3 class="jw-h3 jw-reveal"><span class="lang-zh">合作流程</span><span class="lang-en" lang="en">How It Works</span><span class="lang-zu" lang="zu">Kusebenza Kanjani</span></h3>
+<div class="jw-cat__g"><ol class="jw-steps jw-reveal"><li><b>01</b><span class="lang-zh">聯絡我們</span><span class="lang-en" lang="en">Contact Us</span><span class="lang-zu" lang="zu">Xhumana Nathi</span><span><span class="lang-zh">透過 WhatsApp 告訴我們活動日期、地點和需求。</span><span class="lang-en" lang="en">Tell us the date, location and what you need via WhatsApp.</span><span class="lang-zu" lang="zu">Sitshele usuku nendawo nge-WhatsApp.</span></span></li><li><b>02</b><span class="lang-zh">討論人數與預算</span><span class="lang-en" lang="en">Guests &amp; Budget</span><span class="lang-zu" lang="zu">Inani Nesabelomali</span><span><span class="lang-zh">一起確認用餐人數、預算和用餐形式。</span><span class="lang-en" lang="en">We go over guest numbers, budget and serving style together.</span><span class="lang-zu" lang="zu">Sixoxa ngenani labantu nesabelomali.</span></span></li><li><b>03</b><span class="lang-zh">確認菜單</span><span class="lang-en" lang="en">Confirm the Menu</span><span class="lang-zu" lang="zu">Qinisekisa Imenyu</span><span><span class="lang-zh">依需求建議菜色，確認後開始準備。</span><span class="lang-en" lang="en">We suggest dishes to suit you, then start preparing once confirmed.</span><span class="lang-zu" lang="zu">Siphakamisa izidlo, bese siqala ukulungiselela.</span></span></li><li><b>04</b><span class="lang-zh">準時送達</span><span class="lang-en" lang="en">On-time Delivery</span><span class="lang-zu" lang="zu">Ukulethwa Ngesikhathi</span><span><span class="lang-zh">依約定時間把餐點送到現場。</span><span class="lang-en" lang="en">We deliver your food at the agreed time.</span><span class="lang-zu" lang="zu">Siletha ukudla ngesikhathi esivumelene ngaso.</span></span></li></ol>
+<ul class="jw-conds jw-reveal"><li><svg class="jw-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="lang-zh">活動日兩週前預訂</span><span class="lang-en" lang="en">Book 2 weeks before your event</span><span class="lang-zu" lang="zu">Bhuka emasontweni ama-2 ngaphambili</span></li><li><svg class="jw-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62L18.3 9.38A1 1 0 0 0 17.52 9H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg><span class="lang-zh">外送範圍約 50 公里內</span><span class="lang-en" lang="en">Delivery within about 50 km</span><span class="lang-zu" lang="zu">Ukulethwa cishe ngaphakathi kuka-50 km</span></li><li><svg class="jw-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l3-2 3 2 3-2 3 2 3-2 1 .5V2l-1 .5-3-2-3 2-3-2-3 2-3-2Z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span class="lang-zh">滿 R10,000 即可外送</span><span class="lang-en" lang="en">Delivery for orders over R10,000</span><span class="lang-zu" lang="zu">Kulethwa ama-oda angaphezu kuka-R10,000</span></li>
+<!-- TODO(Hans 提供後補上)：最低人數 min headcount：＿＿ 人 -->
+<!-- TODO(Hans 提供後補上)：每人價格 price per person：R＿＿ 起 -->
+</ul></div>
+<div class="jw-center jw-reveal"><a class="jw-btn jw-btn--wa jw-btn--lg" href="https://wa.me/27791325590?text=%E6%82%A8%E5%A5%BD%EF%BC%8C%E6%88%91%E6%83%B3%E8%A9%A2%E5%95%8F%E6%B1%9F%E5%91%B3%E9%BD%8B%E7%9A%84%E5%A4%96%E7%87%B4%EF%BC%8F%E9%A4%90%E6%9C%83%E6%9C%8D%E5%8B%99%E3%80%82Hi%2C%20I%27d%20like%20to%20ask%20about%20JiangWay%20catering.%0A%E6%B4%BB%E5%8B%95%E6%97%A5%E6%9C%9F%20Date%EF%BC%9A%0A%E4%BA%BA%E6%95%B8%20Guests%EF%BC%9A%0A%E5%9C%B0%E9%BB%9E%20Location%EF%BC%9A" target="_blank" rel="noopener"><svg class="jw-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span class="lang-zh">WhatsApp 詢問外燴 →</span><span class="lang-en" lang="en">Ask About Catering on WhatsApp →</span><span class="lang-zu" lang="zu">Buza nge-WhatsApp →</span></a>
+<p class="jw-note jw-catnote"><span class="lang-zh">請於活動日兩週前預訂。外送範圍：從 Rivonia 店面約 50 公里內，訂單總金額滿 R10,000 即可外送。企業送禮也可參考<a class="jw-link" href="#vouchers">企業餐券方案</a>。</span><span class="lang-en" lang="en">Please book at least 2 weeks before your event. Delivery: within about 50 km of our Rivonia kitchen, for orders over R10,000. For corporate gifts, see our <a class="jw-link" href="#vouchers">corporate vouchers</a>.</span><span class="lang-zu" lang="zu">Sicela ubhuke emasontweni ama-2 ngaphambi komcimbi. Ukulethwa: cishe ngaphakathi kuka-50 km ukusuka e-Rivonia, kuma-oda angaphezu kuka-R10,000. Bona futhi <a class="jw-link" href="#vouchers">amavawutsha</a>.</span></p></div></section>
+<section id="vouchers" class="jw-sec jw-vouchers"><div class="jw-sec__h jw-reveal"><p class="jw-eyebrow"><span class="lang-zh">企業餐券方案</span><span class="lang-en" lang="en">Corporate Vouchers</span><span class="lang-zu" lang="zu">Amavawutsha Ezinkampani</span></p><h2><span class="lang-zh">送禮的好選擇</span><span class="lang-en" lang="en">The Perfect Gift</span><span class="lang-zu" lang="zu">Isipho Esihle</span></h2></div>
+<div class="jw-v__g"><div class="jw-v jw-reveal"><span><span class="lang-zh">單張</span><span class="lang-en" lang="en">Single</span><span class="lang-zu" lang="zu">Eyodwa</span></span><small class="jw-v__tier" lang="en">Individual</small><b>R100</b><p><span class="lang-zh">可用於內用、外帶或外送，最靈活的選擇。</span><span class="lang-en" lang="en">Valid for dine-in, takeaway or delivery — the flexible choice.</span><span class="lang-zu" lang="zu">Isebenza kukho konke — ukukhetha okuguquguqukayo.</span></p></div>
+<div class="jw-v jw-v--hot jw-reveal"><em><span class="lang-zh">最受歡迎</span><span class="lang-en" lang="en">POPULAR</span><span class="lang-zu" lang="zu">EDUMILE</span></em><span><span class="lang-zh">10 張起</span><span class="lang-en" lang="en">Bulk · 10+</span><span class="lang-zu" lang="zu">10+</span></span><small class="jw-v__tier" lang="en">Team Benefits</small><b>R90</b><p><span class="lang-zh">每張省 R10 · 10% 折扣</span><span class="lang-en" lang="en">Save R10 each · 10% off</span><span class="lang-zu" lang="zu">Yonga R10 · 10%</span><br><span class="lang-zh">適合員工福利、團隊聚餐，省心又貼心。</span><span class="lang-en" lang="en">Perfect for employee perks and team meals.</span><span class="lang-zu" lang="zu">Ekulungele izinzuzo zabasebenzi.</span></p></div>
+<div class="jw-v jw-reveal"><span><span class="lang-zh">50 張起</span><span class="lang-en" lang="en">Large · 50+</span><span class="lang-zu" lang="zu">50+</span></span><small class="jw-v__tier" lang="en">Enterprise</small><b>R80</b><p><span class="lang-zh">每張省 R20 · 20% 折扣</span><span class="lang-en" lang="en">Save R20 each · 20% off</span><span class="lang-zu" lang="zu">Yonga R20 · 20%</span><br><span class="lang-zh">大量採購享最優惠，可客製專屬款式。</span><span class="lang-en" lang="en">Best value in bulk, with custom designs available.</span><span class="lang-zu" lang="zu">Inani elihle kakhulu, nemiklamo yakho.</span></p></div></div>
+<div class="jw-center jw-reveal"><a class="jw-btn jw-btn--ghost jw-btn--lg" href="https://wa.me/27791325590?text=您好，我對江味齋的企業餐券方案有興趣，想了解更多。" target="_blank" rel="noopener"><span class="lang-zh">洽詢企業方案 →</span><span class="lang-en" lang="en">Enquire Now →</span><span class="lang-zu" lang="zu">Buza Manje →</span></a></div></section>
+<section id="contact" class="jw-sec jw-contact"><div class="jw-sec__h jw-reveal"><p class="jw-eyebrow"><span class="lang-zh">聯絡我們</span><span class="lang-en" lang="en">Get in Touch</span><span class="lang-zu" lang="zu">Thintana Nathi</span></p><h2><span class="lang-zh">歡迎蒞臨</span><span class="lang-en" lang="en">Come Visit Us</span><span class="lang-zu" lang="zu">Woza Usivakashele</span></h2></div>
+<div class="jw-ct__g"><div class="jw-ct jw-reveal"><svg class="jw-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b><span class="lang-zh">地址</span><span class="lang-en" lang="en">Location</span><span class="lang-zu" lang="zu">Indawo</span></b><span><strong>32 Wessel Rd</strong></span><span>Edenburg, Rivonia</span><span>Johannesburg, 2191</span><a class="jw-btn jw-btn--small" href="https://www.google.com/maps/search/?api=1&amp;query=32+Wessel+Rd%2C+Edenburg%2C+Rivonia%2C+Johannesburg" target="_blank" rel="noopener">📍 Google Maps</a></div></div>
+<div class="jw-ct jw-reveal"><svg class="jw-ic" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b><span class="lang-zh">營業時間</span><span class="lang-en" lang="en">Hours</span><span class="lang-zu" lang="zu">Amahora</span></b><span><strong><span class="lang-zh">週一至週六</span><span class="lang-en" lang="en">Mon – Sat</span><span class="lang-zu" lang="zu">Msombuluko – Mgqibelo</span></strong>　10:30 – 19:00</span><span><strong><span class="lang-zh">週日</span><span class="lang-en" lang="en">Sunday</span><span class="lang-zu" lang="zu">ISonto</span></strong>　<span class="lang-zh">公休</span><span class="lang-en" lang="en">Closed</span><span class="lang-zu" lang="zu">Kuvaliwe</span></span></div></div>
+<div class="jw-ct jw-reveal"><svg class="jw-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><div><b>WhatsApp</b><span>+27 79 132 5590</span><a class="jw-btn jw-btn--small" href="https://wa.me/27791325590" target="_blank" rel="noopener">💬 WhatsApp</a></div></div>
+<div class="jw-ct jw-reveal"><svg class="jw-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 5L2 7"/></svg><div><b>Email</b><span><a class="jw-link" href="mailto:jiangwaycatering@gmail.com">jiangwaycatering@gmail.com</a></span><a class="jw-btn jw-btn--small" href="mailto:jiangwaycatering@gmail.com">✉ Email</a></div></div></div></section>
+</main>
+<footer class="jw-foot"><span class="jw-foot__logo"><span class="jw-logo__mark" aria-hidden="true">江</span>江味齋 JiangWay</span><span>© <span id="yr">2026</span> Intelage Trading CC · <span class="lang-zh">台灣家常料理 · 約翰尼斯堡</span><span class="lang-en" lang="en">Taiwanese Home Cooking · Johannesburg</span><span class="lang-zu" lang="zu">Ukudla KwaseTaiwan · eGoli</span></span>
+<span class="f-visits" id="visits" style="display:none"><span class="lang-zh">累計瀏覽</span><span class="lang-en" lang="en">Total visits</span><span class="lang-zu" lang="zu">Ukuvakashelwa</span> <b id="visitsN">0</b></span></footer>
+<a class="jw-fab" href="https://wa.me/27791325590" target="_blank" rel="noopener" aria-label="WhatsApp 聯絡江味齋 Contact JiangWay"><svg class="jw-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></a>
 <script data-goatcounter="https://jiangwaycatering.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 fetch('https://jiangwaycatering.goatcounter.com/counter/TOTAL.json')
@@ -836,9 +90,7 @@ fetch('https://jiangwaycatering.goatcounter.com/counter/TOTAL.json')
   .then(d=>{if(!d)return;document.getElementById('visitsN').textContent=d.count;document.getElementById('visits').style.display='';})
   .catch(()=>{});
 </script>
-
 <script>
-
 // ===== 完整菜單：資料直接複製自點餐系統 MENU（hwc624/jiangway-order-system index.html，commit 7fec755）=====
 const MENU=[
   {cat:"便當類 BENTO (含3樣小菜 / with 3 side dishes)",items:[
@@ -892,23 +144,24 @@ const CAT_LABEL={b:{zh:"便當",en:"Bento",zu:"I-Bento"},a:{zh:"單點",en:"À l
 const CAT_NOTE={b:{zh:"含 3 樣小菜",en:"With 3 side dishes",zu:"Kuhambisana nezinto ezi-3"}};
 // 菜色圖片：real=實拍照片（Hans 提供），ai=AI 示意圖；飲料與冷凍商品用分類圖示
 const PHOTOS={b1:'real',b2:'real',b4:'real',b5:'real',a7:'real',b3:'ai',b6:'ai',b7:'ai',b8:'ai',b9:'ai',a1:'ai',a2:'ai',a3:'ai',a4:'ai',a5:'ai',a6:'ai',a8:'ai',a9:'ai',a10:'ai',a11:'ai',n1:'ai',n2:'ai',n3:'ai'};
-const ILLUS={zh:"示意圖",en:"Illustration",zu:"Umfanekiso"};
+const ILLUS={zh:"AI 示意",en:"AI illustration",zu:"Umfanekiso we-AI"};
+const REAL={zh:"實拍",en:"Real photo",zu:"Isithombe sangempela"};
 const CAT_ICON={b:"🍱",a:"🍢",n:"🍜",d:"🥤",f:"🧊"};
 const SOLD={zh:"售完",en:"Sold out",zu:"Kuphelile"};
 let soldOut={},curCat=0;
 const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const L=o=>`<span class="lang-zh">${esc(o.zh)}</span><span class="lang-en">${esc(o.en)}</span><span class="lang-zu">${esc(o.zu)}</span>`;
+const L=o=>`<span class="lang-zh">${esc(o.zh)}</span><span class="lang-en" lang="en">${esc(o.en)}</span><span class="lang-zu" lang="zu">${esc(o.zu)}</span>`;
 const catKey=c=>c.items[0].id.charAt(0);
 function renderMenu(){
   const tabs=document.getElementById('menuTabs'),panel=document.getElementById('menuPanel');
   if(!tabs||!panel)return;
-  tabs.innerHTML=MENU.map((c,i)=>`<button role="tab" id="mt${i}" aria-selected="${i===curCat}" data-i="${i}">${L(CAT_LABEL[catKey(c)])}</button>`).join('');
+  tabs.innerHTML=MENU.map((c,i)=>`<button type="button" role="tab" id="mt${i}" aria-selected="${i===curCat}" data-i="${i}">${L(CAT_LABEL[catKey(c)])}</button>`).join('');
   const c=MENU[curCat],note=CAT_NOTE[catKey(c)];
   panel.setAttribute('aria-labelledby','mt'+curCat);
-  panel.innerHTML=(note?`<div class="menu-cat-note">${L(note)}</div>`:'')+'<ul class="menu-list">'+c.items.map(it=>{
-    const out=!!soldOut[it.id];
-    const th=PHOTOS[it.id]?`<img src="images/${it.id}.webp" alt="${esc(it.name)} ${esc(it.nameEn)}" loading="lazy" decoding="async" width="800" height="800">${PHOTOS[it.id]==='ai'?`<span class="mi-illus">${L(ILLUS)}</span>`:''}`:`<span aria-hidden="true">${CAT_ICON[it.id.charAt(0)]}</span>`;
-    return `<li class="menu-item${out?' out':''}" data-id="${it.id}"><div class="mi-thumb">${th}</div><div class="mi-text"><div class="mi-cn">${esc(it.name)}${out?`<span class="mi-badge">${L(SOLD)}</span>`:''}</div><div class="mi-en">${esc(it.nameEn)}</div></div><div class="mi-price">R${it.price}</div></li>`;
+  panel.innerHTML=(note?`<p class="jw-menu__note">${L(note)}</p>`:'')+'<ul class="jw-menu__g">'+c.items.map(it=>{
+    const out=!!soldOut[it.id],ph=PHOTOS[it.id];
+    const th=ph?`<img src="images/${it.id}.webp" alt="${esc(it.name)} ${esc(it.nameEn)}" loading="lazy" decoding="async" width="800" height="800"><span class="jw-tag ${ph==='ai'?'jw-tag--ai':'jw-tag--real'}">${L(ph==='ai'?ILLUS:REAL)}</span>`:`<span class="jw-mi__emoji" aria-hidden="true">${CAT_ICON[it.id.charAt(0)]}</span>`;
+    return `<li class="jw-mi${out?' jw-mi--out':''}" data-id="${it.id}"><figure class="jw-fig">${th}</figure><div class="jw-mi__t"><b>${esc(it.name)}${out?`<span class="jw-mi__sold">${L(SOLD)}</span>`:''}</b><small class="jw-mi__en" lang="en">${esc(it.nameEn)}</small><span class="jw-price">R${it.price}</span></div></li>`;
   }).join('')+'</ul>';
 }
 document.getElementById('menuTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;curCat=+b.dataset.i;renderMenu();});
@@ -928,39 +181,27 @@ try{
   }else{pollSold();setInterval(pollSold,60000);}
 }catch(e){pollSold();}
 document.getElementById('yr').textContent=new Date().getFullYear();
-// 語言切換
-function setLang(lang,btn){
-  document.body.className=lang==='zh'?'':lang;
-  document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.documentElement.lang=lang==='zh'?'zh-TW':lang==='en'?'en':'zu';
-  // 同步兩組語言按鈕（手機 + 桌面其實是同一組，但保險起見）
-}
-// 導覽列滾動效果
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>60);
-});
+// 語言切換（v5）：只增減 en/zu class，不清掉 body 的 jw-site
+function setLang(lang){var b=document.body;b.classList.remove('en','zu');if(lang!=='zh')b.classList.add(lang);
+document.documentElement.lang=lang==='zh'?'zh-Hant':lang;
+document.querySelectorAll('.jw-lang button').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.lang===lang)});
+try{localStorage.setItem('jw-lang',lang)}catch(e){}}
+document.querySelectorAll('.jw-lang button').forEach(function(x){x.addEventListener('click',function(){setLang(x.dataset.lang)})});
+(function(){var q=new URLSearchParams(location.search).get('lang'),s=null;try{s=localStorage.getItem('jw-lang')}catch(e){}var l=q||s;if(l==='en'||l==='zu'||l==='zh')setLang(l)})();
 // 手機選單
-const toggle=document.getElementById('navToggle');
-const links=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>{
-  toggle.classList.toggle('open');
-  links.classList.toggle('open');
-});
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-  toggle.classList.remove('open');links.classList.remove('open');
-}));
+const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+function setMenu(o){toggle.classList.toggle('open',o);links.classList.toggle('open',o);toggle.setAttribute('aria-expanded',o);}
+toggle.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 // 進場動畫
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('in'), (i%3)*120);
-      io.unobserve(e.target);
-    }
-  });
-},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+if('IntersectionObserver' in window){
+const io=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),(i%3)*120);io.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.jw-reveal').forEach(el=>io.observe(el));
+}else document.querySelectorAll('.jw-reveal').forEach(el=>el.classList.add('in'));
+// 浮動 WhatsApp：聯絡區或頁尾進入畫面時收起
+(function(){var f=document.querySelector('.jw-fab');if(!f||!('IntersectionObserver' in window))return;var v=new Set();
+var io2=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?v.add(e.target):v.delete(e.target)});f.classList.toggle('is-hidden',v.size>0)});
+document.querySelectorAll('#contact,.jw-foot').forEach(function(el){io2.observe(el)})})();
 </script>
 </body>
 </html>

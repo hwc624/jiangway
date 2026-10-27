@@ -1,0 +1,173 @@
+/* 江味齋官網 · 夜市霓虹 B · components v1 — 需先載入 tokens.css
+   命名：.jw-block / .jw-block__part / .jw-block--variant；斷點 960px（桌機）。 */
+*,*::before,*::after{box-sizing:border-box}
+:where(.jw-site),:where(.jw-site) *{margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+.jw-site{font-family:var(--jw-font-body);background:var(--jw-bg-page);color:var(--jw-text-main);line-height:var(--jw-lh-body);-webkit-font-smoothing:antialiased}
+:where(.jw-site) img{display:block;width:100%;height:100%;object-fit:cover}
+:where(.jw-site) a{color:inherit;text-decoration:none}
+:where(.jw-site) :is(ul,ol){list-style:none}
+:where(.jw-site) :focus-visible{outline:none;box-shadow:var(--jw-focus-ring)}
+.jw-ic{flex:none}
+
+/* 語言顯示：只「隱藏」不屬於目前語言的 span，不寫任何 display 顯示值，
+   所以不會和元件自己的 display:block/inline 打架（用 !important 壓過元件規則）。
+   body 沒有語言 class = 中文；body.en = 英文；body.zu = 祖魯文。 */
+body:not(.en) .lang-en,body:not(.zu) .lang-zu,body.en .lang-zh,body.zu .lang-zh{display:none!important}
+
+/* nav */
+.jw-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:var(--jw-sp-3);padding:10px var(--jw-sp-4);background:var(--jw-bg-nav);backdrop-filter:blur(10px);border-bottom:1px solid var(--jw-line-main)}
+.jw-logo{display:flex;align-items:center;gap:10px;min-height:var(--jw-tap);margin-right:auto}
+.jw-logo__mark{display:grid;place-items:center;width:40px;height:40px;font:700 22px var(--jw-font-display);background:var(--jw-accent-main);color:var(--jw-accent-ink);border-radius:var(--jw-r-logo);box-shadow:var(--jw-glow-accent)}
+.jw-logo__t{font:700 20px/1.1 var(--jw-font-display)}
+.jw-logo__t small{display:block;font:600 11px var(--jw-font-body);letter-spacing:.12em;color:var(--jw-text-muted)}
+.jw-nav__links{display:none}
+.jw-nav__links a{min-height:var(--jw-tap);display:inline-flex;align-items:center;padding:0 10px;font-weight:600;font-size:var(--jw-fs-md);transition:color var(--jw-dur-fast)}
+.jw-nav__links a:hover{color:var(--jw-amber-main)}
+.jw-nav__order{display:none!important}
+
+/* 語言切換 */
+.jw-lang{display:flex;border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card);overflow:hidden}
+.jw-lang button{min-width:var(--jw-tap);min-height:var(--jw-tap);padding:0 8px;border:0;background:transparent;color:var(--jw-text-main);font:700 14px var(--jw-font-body);cursor:pointer}
+.jw-lang button:hover{background:var(--jw-bg-raised)}
+.jw-lang button[aria-pressed=true]{background:var(--jw-text-main);color:var(--jw-bg-page)}
+
+/* 按鈕 */
+.jw-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--jw-tap);padding:0 18px;border-radius:var(--jw-r-card);font-weight:700;font-size:var(--jw-fs-16);border:2px solid transparent;font-family:var(--jw-font-body);cursor:pointer;transition:transform var(--jw-dur-fast) var(--jw-ease),filter var(--jw-dur-fast)}
+.jw-btn:hover{filter:brightness(1.08)}
+.jw-btn:active{transform:scale(.97)}
+.jw-btn--lg{min-height:var(--jw-tap-lg);padding:0 24px;font-size:var(--jw-fs-lg)}
+.jw-btn--small{min-height:var(--jw-tap);font-size:var(--jw-fs-14);padding:0 14px;border-color:var(--jw-line-main);margin-top:6px}
+.jw-btn--order{background:var(--jw-accent-main);color:var(--jw-accent-ink);box-shadow:var(--jw-glow-btn)}
+.jw-btn--ghost{border-color:var(--jw-text-main);color:var(--jw-text-main)}
+.jw-btn--wa{background:var(--jw-wa-main);color:#0B2E17}
+
+/* hero */
+.jw-hero{display:grid;gap:var(--jw-sp-5);padding:var(--jw-sp-6) var(--jw-sp-4) var(--jw-sp-7);background:radial-gradient(60% 50% at 80% 20%,rgba(255,74,61,.22),transparent),radial-gradient(50% 40% at 10% 90%,rgba(255,181,71,.14),transparent)}
+.jw-eyebrow{font-weight:700;font-size:var(--jw-fs-sm);letter-spacing:.14em;color:var(--jw-amber-main);text-transform:uppercase}
+.jw-hero h1{font:900 var(--jw-fs-hero)/1 var(--jw-font-display);margin:8px 0 12px;color:var(--jw-accent-main);text-shadow:var(--jw-glow-hero-title)}
+.jw-hero h1 em{display:block;font:normal 800 .3em var(--jw-font-body);letter-spacing:.3em;color:var(--jw-amber-main);text-shadow:var(--jw-glow-hero-sub);margin-top:6px}
+.jw-lead{font-size:var(--jw-fs-lg);max-width:34em;color:var(--jw-text-muted)}
+.jw-cta{display:flex;flex-wrap:wrap;gap:var(--jw-sp-3);margin:var(--jw-sp-5) 0}
+.jw-hero__img{aspect-ratio:4/3;border:2px solid var(--jw-accent-main);box-shadow:var(--jw-glow-photo)}
+
+/* 營業時間 / 資訊卡共用 */
+.jw-hours{display:flex;gap:var(--jw-sp-3);align-items:flex-start;padding:14px var(--jw-sp-4);border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card);background:var(--jw-bg-card);max-width:420px}
+.jw-hours b,.jw-hours span:not(.lang-zh):not(.lang-en):not(.lang-zu):not(.jw-badge){display:block}
+.jw-hours .jw-ic,.jw-ct .jw-ic{color:var(--jw-amber-main);margin-top:3px}
+
+.jw-hours--open .jw-hours__state{color:var(--jw-success-main)}
+.jw-hours--closed .jw-hours__state{color:var(--jw-error-main)}
+.jw-badge{display:inline-block;font-size:var(--jw-fs-xs);font-weight:700;padding:1px 8px;border-radius:var(--jw-r-pill);background:var(--jw-badge-bg);color:var(--jw-badge-ink);vertical-align:2px;margin-left:4px}
+
+.jw-hours span.jw-badge,.jw-ct span.jw-badge,.jw-market span.jw-badge{display:inline-block}
+
+/* 照片 + 標籤 */
+.jw-fig{position:relative;overflow:hidden;border-radius:var(--jw-r-card)}
+.jw-tag{position:absolute;left:8px;bottom:8px;font:700 12px var(--jw-font-body);padding:2px 8px;border-radius:var(--jw-r-xs);background:var(--jw-tag-bg);color:var(--jw-tag-ink)}
+
+/* 市集條 */
+.jw-market{padding:0 var(--jw-sp-4)}
+.jw-market__in{display:flex;flex-wrap:wrap;gap:var(--jw-sp-3);align-items:center;padding:14px var(--jw-sp-4);border-radius:var(--jw-r-card);background:var(--jw-bg-market);color:var(--jw-text-market);border:1px solid var(--jw-amber-main);box-shadow:var(--jw-glow-market)}
+.jw-market__in b,.jw-market__in span:not(.lang-zh):not(.lang-en):not(.lang-zu):not(.jw-badge){display:block}
+.jw-market__in>div{flex:1;min-width:200px}
+.jw-market .jw-btn--small{border-color:currentColor;margin:0}
+
+/* 區塊 */
+.jw-sec{padding:var(--jw-sp-14) var(--jw-sp-4)}
+.jw-sec__h{max-width:720px;margin-bottom:var(--jw-sp-6)}
+.jw-sec h2{font:900 var(--jw-fs-h2)/1.2 var(--jw-font-display);margin:6px 0 10px;letter-spacing:.02em}
+.jw-sub{color:var(--jw-text-muted)}
+.jw-center{text-align:center;margin-top:var(--jw-sp-6)}
+
+/* 關於 */
+.jw-about__g{display:grid;gap:var(--jw-sp-6)}
+.jw-about p+p{margin-top:var(--jw-sp-3)}
+.jw-about__img{aspect-ratio:1}
+.jw-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--jw-sp-2);margin-top:var(--jw-sp-5)}
+.jw-stats li{padding:12px 8px;border-top:3px solid var(--jw-accent-main);font-size:var(--jw-fs-14);color:var(--jw-text-muted)}
+.jw-stats b{display:block;font:800 26px var(--jw-font-num);color:var(--jw-text-main)}
+
+/* 招牌菜卡 */
+.jw-dishes{background:linear-gradient(var(--jw-bg-page),var(--jw-bg-section-alt))}
+.jw-dishes__g{display:grid;grid-template-columns:1fr 1fr;gap:var(--jw-sp-3)}
+.jw-dish{background:var(--jw-bg-card);border-radius:var(--jw-r-card);overflow:hidden;border:1px solid var(--jw-line-main)}
+.jw-dish .jw-fig{aspect-ratio:4/3;border-radius:0}
+.jw-dish__b{padding:12px 12px 16px}
+.jw-dish h3{font:800 19px var(--jw-font-display)}
+.jw-dish p{color:var(--jw-text-muted);font-size:var(--jw-fs-md)}
+
+/* 菜單：分類 tab + 列表（舊站 JS 產生 #menuTabs / #menuPanel） */
+.jw-tabs{display:flex;gap:var(--jw-sp-2);overflow-x:auto;padding-bottom:6px;margin-bottom:var(--jw-sp-5);-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.jw-tabs button{flex:0 0 auto;min-height:var(--jw-tap);padding:0 16px;border-radius:var(--jw-r-pill);border:1px solid var(--jw-line-strong);background:transparent;color:var(--jw-text-main);font:700 var(--jw-fs-md) var(--jw-font-body);cursor:pointer}
+.jw-tabs button[aria-selected=true]{background:var(--jw-accent-main);border-color:var(--jw-accent-main);color:var(--jw-accent-ink);box-shadow:var(--jw-glow-accent)}
+.jw-menu__g{display:grid;grid-template-columns:1fr 1fr;gap:var(--jw-sp-3)}
+.jw-mi{background:var(--jw-bg-card);border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card);overflow:hidden}
+.jw-mi .jw-fig{aspect-ratio:1;border-radius:0;background:var(--jw-bg-tile);display:grid;place-items:center}
+.jw-mi__t{padding:10px 12px}
+.jw-mi b{display:block;font-size:var(--jw-fs-16)}
+.jw-mi--out{opacity:.55}.jw-mi--out .jw-price{text-decoration:line-through}
+.jw-mi__sold{display:inline-block;margin-left:6px;font-size:var(--jw-fs-xs);padding:1px 8px;border-radius:var(--jw-r-pill);background:var(--jw-error-soft);color:var(--jw-error-main)}
+.jw-price{font:800 var(--jw-fs-16) var(--jw-font-num);color:var(--jw-amber-main)}
+
+/* 烘焙 */
+.jw-bakery{background:var(--jw-bg-bakery);--jw-amber-main:var(--jw-amber-light)}
+.jw-chips{display:grid;grid-template-columns:1fr 1fr;gap:var(--jw-sp-3)}
+.jw-chips li{display:flex;align-items:center;gap:10px;min-height:64px;padding:12px 14px;border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card);font-weight:700;background:var(--jw-bg-card)}
+.jw-chips .jw-ic{color:var(--jw-amber-main)}
+.jw-note{margin-top:var(--jw-sp-3);font-size:var(--jw-fs-sm);color:var(--jw-text-muted)}
+
+/* 外燴 */
+.jw-cat__g{display:grid;gap:var(--jw-sp-5)}
+.jw-steps{display:grid;gap:10px}
+.jw-steps li{padding:14px 16px;background:var(--jw-bg-card);border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card);font-weight:700}
+.jw-steps b{font:800 20px var(--jw-font-num);color:var(--jw-amber-main);margin-right:10px}
+.jw-steps span:not(.lang-zh):not(.lang-en):not(.lang-zu):not(.jw-badge){display:block;font-weight:400;font-size:var(--jw-fs-14);color:var(--jw-text-muted)}
+.jw-conds li{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px dashed var(--jw-line-main)}
+.jw-conds .jw-ic{color:var(--jw-amber-main)}
+
+/* 餐券 */
+.jw-v__g{display:grid;gap:14px}
+.jw-v{position:relative;padding:var(--jw-sp-5);border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card);background:var(--jw-bg-card)}
+.jw-v>span{font-weight:700;color:var(--jw-text-muted)}
+.jw-v b{display:block;font:900 var(--jw-fs-num)/1.1 var(--jw-font-num);margin:4px 0}
+.jw-v p{font-size:var(--jw-fs-14);color:var(--jw-text-muted)}
+.jw-v--hot{border:2px solid var(--jw-accent-main);box-shadow:var(--jw-glow-card-hot)}
+.jw-v em{position:absolute;top:-12px;right:16px;font:700 13px var(--jw-font-body);font-style:normal;padding:2px 10px;border-radius:var(--jw-r-pill);background:var(--jw-accent-main);color:var(--jw-accent-ink)}
+
+/* 聯絡 */
+.jw-ct__g{display:grid;gap:var(--jw-sp-3)}
+.jw-ct{display:flex;gap:var(--jw-sp-3);padding:var(--jw-sp-4);background:var(--jw-bg-card);border:1px solid var(--jw-line-main);border-radius:var(--jw-r-card)}
+.jw-ct .jw-ic{margin-top:2px}
+.jw-ct b,.jw-ct span:not(.lang-zh):not(.lang-en):not(.lang-zu):not(.jw-badge){display:block}
+.jw-ct span:not(.lang-zh):not(.lang-en):not(.lang-zu){overflow-wrap:anywhere}
+.jw-muted{font-size:var(--jw-fs-sm);color:var(--jw-text-muted)}
+
+/* footer：底部留出浮動 WhatsApp 的高度 + 安全區 */
+.jw-foot{display:flex;flex-direction:column;gap:4px;padding:var(--jw-sp-6) var(--jw-sp-4) calc(96px + var(--jw-safe-b));font-size:var(--jw-fs-sm);color:var(--jw-text-muted);border-top:1px solid var(--jw-line-main)}
+
+/* 浮動 WhatsApp（手機限定；聯絡區/頁尾在畫面內時由 JS 加 .is-hidden 收起，避免蓋住卡片角） */
+.jw-fab{position:fixed;right:var(--jw-sp-4);bottom:calc(var(--jw-sp-4) + var(--jw-safe-b));z-index:30;width:var(--jw-fab);height:var(--jw-fab);border-radius:50%;display:grid;place-items:center;background:var(--jw-wa-main);color:#0B2E17;box-shadow:var(--jw-glow-wa);transition:transform var(--jw-dur-base) var(--jw-ease),opacity var(--jw-dur-base)}
+.jw-fab.is-hidden{transform:translateY(24px) scale(.8);opacity:0;pointer-events:none}
+
+/* 進場動畫（JS 加 .in）；減少動態時直接顯示 */
+.jw-reveal{opacity:0;transform:translateY(16px);transition:opacity var(--jw-dur-reveal) var(--jw-ease),transform var(--jw-dur-reveal) var(--jw-ease)}
+.jw-reveal.in{opacity:1;transform:none}
+
+@media(min-width:960px){
+  .jw-nav{padding:10px 40px}.jw-nav__links{display:flex}.jw-nav__order{display:inline-flex!important}
+  .jw-hero{grid-template-columns:1.05fr 1fr;align-items:center;padding:56px 40px;gap:48px}.jw-hero__img{aspect-ratio:1}
+  .jw-market{padding:0 40px}
+  .jw-sec{padding:var(--jw-sp-22) 40px}
+  .jw-about__g{grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+  .jw-dishes__g,.jw-menu__g,.jw-chips{grid-template-columns:repeat(4,1fr)}
+  .jw-cat__g{grid-template-columns:1.3fr 1fr;gap:40px}.jw-steps{grid-template-columns:1fr 1fr}
+  .jw-v__g{grid-template-columns:repeat(3,1fr)}.jw-ct__g{grid-template-columns:repeat(4,1fr)}
+  .jw-foot{flex-direction:row;justify-content:space-between;padding:24px 40px}
+  .jw-fab{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .jw-site *,.jw-site *::before,.jw-site *::after{animation:none!important;transition:none!important}
+  .jw-reveal{opacity:1;transform:none}
+}
